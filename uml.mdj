@@ -1240,7 +1240,7 @@
 											"font": "Arial;13;1",
 											"left": 221,
 											"top": 391,
-											"width": 63.2353515625,
+											"width": 76.4384765625,
 											"height": 13,
 											"text": "Sun"
 										},
@@ -1275,7 +1275,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 384,
-									"width": 73.2353515625,
+									"width": 86.4384765625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFttRMalh3wbbg="
@@ -1312,16 +1312,16 @@
 											"font": "Arial;13;0",
 											"left": 221,
 											"top": 414,
-											"width": 63.2353515625,
+											"width": 76.4384765625,
 											"height": 13,
-											"text": "+Attribute1",
+											"text": "+timer: Timer",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 409,
-									"width": 73.2353515625,
+									"width": 86.4384765625,
 									"height": 23
 								},
 								{
@@ -1336,7 +1336,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 432,
-									"width": 73.2353515625,
+									"width": 86.4384765625,
 									"height": 10
 								},
 								{
@@ -1376,7 +1376,7 @@
 							"containerChangeable": true,
 							"left": 216,
 							"top": 384,
-							"width": 73.2353515625,
+							"width": 86.4384765625,
 							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAFttRMalh3vrcQ="
@@ -7375,8 +7375,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFttRMalR3s6ck="
 							},
-							"name": "Attribute1",
-							"type": ""
+							"name": "timer",
+							"type": "Timer"
 						}
 					]
 				},
