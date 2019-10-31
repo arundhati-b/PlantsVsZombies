@@ -52,11 +52,14 @@
       </image>
     </ImageView>
     <ImageView id="leaderboard@3x.png" fx:id="leaderboard" fitHeight="411.0" fitWidth="674.0" layoutX="234.0" layoutY="68.0">
+      <effect>
+        <DropShadow fx:id="x2" />
+      </effect>
       <image>
         <Image url="@resources/Buttons/leaderboard@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="okBtn@3x.png" fx:id="okBtn" fitHeight="69.0" fitWidth="119.0" layoutX="499.0" layoutY="419.0">
+    <ImageView id="okBtn@3x.png" fx:id="okBtn" effect="$x2" fitHeight="69.0" fitWidth="119.0" layoutX="499.0" layoutY="419.0">
       <image>
         <Image url="@resources/Buttons/okBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
