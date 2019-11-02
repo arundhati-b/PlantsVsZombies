@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -25,6 +26,8 @@ public class Backyard implements Initializable {
     ImageView peashooter;
     @FXML
     ImageView sunflower;
+    @FXML
+    Label Score,sunCount;
 //    @FXML
 //    ImageView walnut;
 //    @FXML
