@@ -94,7 +94,7 @@ public class Backyard implements Initializable {
 
     void addFunctionalities(final ImageView source, final VBox target)
     {
-//        ImageView holder = new ImageView();
+        Timer time = new Timer();
         source.setOnDragDetected(e -> {
             System.out.println("Drag detected");
 
@@ -108,12 +108,10 @@ public class Backyard implements Initializable {
         target.setOnDragOver(e -> {
             System.out.println("Dragged over");
 
-//            if(e.getSource() != target && e.getDragboard().hasImage())
             if(e.getDragboard().hasImage())
             {
                 System.out.println("here");
                 e.acceptTransferModes(TransferMode.ANY);
-//                target.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
                 target.setStyle("-fx-background-color: rgb(0,0,0,0.3)");
             }
             e.consume();
@@ -141,6 +139,7 @@ public class Backyard implements Initializable {
                     pickedPlant.setImage(((ImageView)s).getImage());
                 else
                     pickedPlant.setImage(db.getImage());
+
                 System.out.println(s.getClass());
 //                pickedPlant.setImage(db.getImage());
                 pickedPlant.setPreserveRatio(true);
@@ -148,24 +147,16 @@ public class Backyard implements Initializable {
                 pickedPlant.fitHeightProperty().bind(target.heightProperty());
 //                pickedPlant.preserveRatioProperty();
                 target.getChildren().add(pickedPlant);
+                if(pickedPlant.getImage() == peashooter.getImage()) {
+                    System.out.println("hereee");
+                    time.schedule(new Pea(new ImageView("sample/resources/pea.png"), pickedPlant.getLayoutX(), pickedPlant.getLayoutY()), 0, 3000);
 //                System.out.println(target.getClass());
+                }
             }
             e.consume();
         });
+        }
 
-
-    }
-
-//    public void dragPea(){
-//        peashooter.setOnMouseDragged(e -> {
-//            Image temp = new Image("/resources/peashooter.gif");
-//            System.out.println("Here");
-//            ImageView a = new ImageView();
-//            a.setImage(temp);
-//            a.setTranslateX(e.getSceneX());
-//            a.setTranslateY(e.getSceneY());
-//        });
-//    }
 
     void intializecells()
     {

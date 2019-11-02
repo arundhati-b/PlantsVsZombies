@@ -26,22 +26,22 @@
         <Image url="@resources/Zombie_Walk.gif" />
       </image>
     </ImageView>
-    <ImageView layoutX="190.0" layoutY="190.0">
+    <ImageView fx:id="lm2" layoutX="190.0" layoutY="190.0">
       <image>
         <Image url="@resources/Lawnmower_Idle.gif" />
       </image>
     </ImageView>
-    <ImageView layoutX="195.0" layoutY="72.0">
+    <ImageView fx:id="lm1" layoutX="195.0" layoutY="72.0">
       <image>
         <Image url="@resources/Lawnmower_Idle.gif" />
       </image>
     </ImageView>
-    <ImageView layoutX="181.0" layoutY="301.0">
+    <ImageView fx:id="lm3" layoutX="181.0" layoutY="301.0">
       <image>
         <Image url="@resources/Lawnmower_Idle.gif" />
       </image>
     </ImageView>
-    <ImageView layoutX="171.0" layoutY="410.0">
+    <ImageView fx:id="lm4" layoutX="171.0" layoutY="410.0">
       <image>
         <Image url="@resources/Lawnmower_Idle.gif" />
       </image>
@@ -51,7 +51,7 @@
         <Image url="@resources/Buttons/UpperPanel2@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView layoutX="168.0" layoutY="511.0">
+    <ImageView fx:id="lm5" layoutX="168.0" layoutY="511.0">
       <image>
         <Image url="@resources/Lawnmower_Idle.gif" />
       </image>
@@ -141,10 +141,10 @@
         <Image url="@resources/Pea.png" />
       </image>
     </ImageView>
-    <ProgressBar layoutX="765.0" layoutY="12.0" prefHeight="37.0" prefWidth="304.0" progress="0.0" />
+    <ProgressBar fx:id="pb" layoutX="765.0" layoutY="12.0" prefHeight="37.0" prefWidth="304.0" progress="0.0" />
     <ImageView id="title.png" fitHeight="234.66668701171875" fitWidth="497.6666564941406" layoutX="350.0" layoutY="-87.0" scaleX="0.3" scaleY="0.3">
       <effect>
-        <DropShadow radius="68.5" width="255.0" />
+        <DropShadow radius="97.75" width="255.0" />
       </effect>
       <image>
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
