@@ -34,7 +34,7 @@
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="181.0" layoutY="301.0">
+        <ImageView fx:id="lm3" layoutX="181.0" layoutY="301.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>

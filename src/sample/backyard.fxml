@@ -24,27 +24,27 @@
                 <Image url="@resources/Zombie_Walk.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="190.0" layoutY="190.0">
+        <ImageView fx:id="lm2" layoutX="190.0" layoutY="190.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="195.0" layoutY="72.0">
+        <ImageView fx:id="lm1" layoutX="195.0" layoutY="72.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="181.0" layoutY="301.0">
+        <ImageView fx:id="lm3" layoutX="181.0" layoutY="301.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="171.0" layoutY="410.0">
+        <ImageView fx:id="lm4" layoutX="171.0" layoutY="410.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
         </ImageView>
-        <ImageView layoutX="168.0" layoutY="511.0">
+        <ImageView fx:id="lm5" layoutX="168.0" layoutY="511.0">
             <image>
                 <Image url="@resources/Lawnmower_Idle.gif" />
             </image>
