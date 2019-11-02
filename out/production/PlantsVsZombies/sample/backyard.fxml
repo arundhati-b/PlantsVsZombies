@@ -16,14 +16,14 @@
     </ImageView>
     <GridPane fx:id="gridpane" layoutX="274.0" layoutY="82.0" prefHeight="544.0" prefWidth="815.0">
       <children>
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-        <VBox onDragDropped="#handleDragDrop" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="8" GridPane.rowIndex="0" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="90.0" />
