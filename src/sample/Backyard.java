@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -39,6 +40,8 @@ public class Backyard implements Initializable {
     ImageView sun2;
     @FXML
     ImageView sun3;
+    @FXML
+    ProgressBar pb;
     int counter = 0;
 
     @FXML
@@ -52,36 +55,6 @@ public class Backyard implements Initializable {
         ArrayList<ImageView> sources = new ArrayList<>();
         sources.add(peashooter);
         sources.add(sunflower);
-//        sources.add(walnut);
-//        sources.add(cherrybomb);
-
-//        for(int i=0; i<sources.size(); i++)
-//        {
-//            final ImageView source = sources.get(i);
-//            source.setOnDragDetected(e -> {
-//                Dragboard db = source.startDragAndDrop(TransferMode.ANY);
-//                ClipboardContent cb = new ClipboardContent();
-//                cb.putImage(source.getImage());
-//                db.setContent(cb);
-//                e.consume();
-//            });
-//        }
-
-
-//        sources.add(walnut);
-//        sources.add(cherrybomb);
-
-//        for(int i=0; i<sources.size(); i++)
-//        {
-//            final ImageView source = sources.get(i);
-//            source.setOnDragDetected(e -> {
-//                Dragboard db = source.startDragAndDrop(TransferMode.ANY);
-//                ClipboardContent cb = new ClipboardContent();
-//                cb.putImage(source.getImage());
-//                db.setContent(cb);
-//                e.consume();
-//            });
-//        }
 
 
         for(int i=0; i<9; i++)
@@ -94,48 +67,9 @@ public class Backyard implements Initializable {
                     final ImageView source = sources.get(k);
                     addFunctionalities(source,target);
                 }
-
-
-//                target.setOnDragOver(e -> {
-//                    if(e.getSource() != target && e.getDragboard().hasImage())
-//                    {
-//                        e.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-//                        target.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-//                    }
-//                    e.consume();
-//                });
-//
-//                target.setOnDragExited(e -> {
-//                    target.setBackground(Background.EMPTY);
-//                    e.consume();
-//                });
-//
-//                target.setOnDragDropped(e -> {
-//            Dragboard db = e.getDragboard();
-//            e.acceptTransferModes(TransferMode.ANY);
-//            if(db.hasImage())
-//            {
-//                ImageView pickedPlant = new ImageView(db.getImage());
-//                target.getChildren().add(pickedPlant);
-//                System.out.println(target.getClass());
-//            }
-//            e.consume();
-//        });
             }
         }
-//        gridpane.setOnDragDropped(e -> {
-//            Dragboard db = e.getDragboard();
-//            e.acceptTransferModes(TransferMode.ANY);
-//            if(db.hasImage())
-//            {
-//                ImageView pickedPlant = new ImageView(db.getImage());
-////                gridpane.add(pickedPlant,0,0,1,1);
-//                Node node = e.getPickResult().getIntersectedNode();
-//                System.out.println(node.getClass());
-//            }
-//            e.consume();
-//
-//        });
+
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -147,11 +81,12 @@ public class Backyard implements Initializable {
         ZombieAppear a1 = new ZombieAppear(z1);
         ZombieAppear a2 = new ZombieAppear(z2);
         SunView sunView1  = new SunView(sun1);
-
+        ProgBar progressbar = new ProgBar(pb);
           Timer time = new Timer();
           time.schedule(a1, 1000);
           time.schedule(a2, 5000);
           time.schedule(sunView1, 8000);
+          time.schedule(progressbar, 1000, 1000);
 
     }
 
