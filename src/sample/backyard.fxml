@@ -12,6 +12,7 @@
     <ImageView id="backyard.jpg" layoutX="0.0" layoutY="51.0">
       <image>
         <Image url="@resources/backyard.jpg" preserveRatio="true" smooth="true" />
+
       </image>
     </ImageView>
     <ImageView fx:id="z1" layoutX="1126.0" layoutY="198.0">
@@ -54,7 +55,7 @@
         <Image url="@resources/SunFlower.gif" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-<<<<<<< HEAD
+
     <GridPane fx:id="gridpane" layoutX="282.0" layoutY="80.0" prefHeight="546.0" prefWidth="804.0">
       <children>
         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -186,9 +187,55 @@
          </image>
       </ImageView>
       <ProgressBar layoutX="839.0" layoutY="19.0" prefWidth="200.0" progress="0.0" />
-=======
+
     <Label id="Score" fx:id="score" alignment="CENTER" layoutX="1124.0" layoutY="46.0" prefHeight="31.0" prefWidth="72.0" text="0" textFill="WHITE" />
     <Label fx:id="sunCount" alignment="CENTER" layoutX="7.0" layoutY="607.0" prefHeight="39.0" prefWidth="79.0" text="100" textFill="WHITE" textOverrun="WORD_ELLIPSIS" />
+
+      </image>
+    </ImageView>
+    <ImageView fx:id="z1" layoutX="1126.0" layoutY="198.0">
+      <image>
+        <Image url="@resources/Zombie_Walk.gif" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="z2" layoutX="1119.0" layoutY="50.0">
+      <image>
+        <Image url="@resources/Zombie_Walk.gif" />
+      </image>
+    </ImageView>
+    <ImageView layoutX="190.0" layoutY="190.0">
+      <image>
+        <Image url="@resources/Lawnmower_Idle.gif" />
+      </image>
+    </ImageView>
+    <ImageView layoutX="195.0" layoutY="72.0">
+      <image>
+        <Image url="@resources/Lawnmower_Idle.gif" />
+      </image>
+    </ImageView>
+    <ImageView layoutX="181.0" layoutY="301.0">
+      <image>
+        <Image url="@resources/Lawnmower_Idle.gif" />
+      </image>
+    </ImageView>
+    <ImageView layoutX="171.0" layoutY="410.0">
+      <image>
+        <Image url="@resources/Lawnmower_Idle.gif" />
+      </image>
+    </ImageView>
+    <ImageView layoutX="168.0" layoutY="511.0">
+      <image>
+        <Image url="@resources/Lawnmower_Idle.gif" />
+      </image>
+    </ImageView>
+    <ImageView id="SunFlower.gif" fx:id="sunflower" fitHeight="85.0" fitWidth="72.0" layoutX="14.0" layoutY="256.0">
+      <image>
+        <Image url="@resources/SunFlower.gif" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label id="Score" fx:id="score" alignment="CENTER" layoutX="1124.0" layoutY="46.0" prefHeight="31.0" prefWidth="72.0" text="0" textFill="WHITE" />
+    <Label fx:id="sunCount" alignment="CENTER" layoutX="7.0" layoutY="607.0" prefHeight="39.0" prefWidth="79.0" text="100" textFill="WHITE" textOverrun="WORD_ELLIPSIS" />
+
     <VBox fx:id="vx00" alignment="CENTER" layoutX="290.0" layoutY="67.0" prefHeight="123.0" prefWidth="79.0" />
     <VBox fx:id="vx10" alignment="CENTER" layoutX="369.0" layoutY="67.0" prefHeight="123.0" prefWidth="79.00009999999747" />
     <VBox fx:id="vx20" alignment="CENTER" layoutX="449.0" layoutY="67.0" prefHeight="123.0" prefWidth="100.0" />
@@ -239,6 +286,6 @@
         <Image url="@resources/peashooter.gif" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
->>>>>>> 5029d2c5229ef4abfa36e904eee3e31d74b8171a
+
   </children>
 </AnchorPane>

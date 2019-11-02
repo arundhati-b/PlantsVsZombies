@@ -52,21 +52,6 @@ public class Backyard implements Initializable {
         ArrayList<ImageView> sources = new ArrayList<>();
         sources.add(peashooter);
         sources.add(sunflower);
-<<<<<<< HEAD
-        sources.add(walnut);
-        sources.add(cherrybomb);
-        for(int i=0; i<sources.size(); i++)
-        {
-            ImageView source = sources.get(i);
-            source.setOnDragDetected(e -> {
-                Dragboard db = source.startDragAndDrop(TransferMode.ANY);
-                ClipboardContent cb = new ClipboardContent();
-                cb.putImage(source.getImage());
-                db.setContent(cb);
-                e.consume();
-            });
-        }
-=======
 //        sources.add(walnut);
 //        sources.add(cherrybomb);
 
@@ -81,7 +66,23 @@ public class Backyard implements Initializable {
 //                e.consume();
 //            });
 //        }
->>>>>>> 5029d2c5229ef4abfa36e904eee3e31d74b8171a
+
+
+//        sources.add(walnut);
+//        sources.add(cherrybomb);
+
+//        for(int i=0; i<sources.size(); i++)
+//        {
+//            final ImageView source = sources.get(i);
+//            source.setOnDragDetected(e -> {
+//                Dragboard db = source.startDragAndDrop(TransferMode.ANY);
+//                ClipboardContent cb = new ClipboardContent();
+//                cb.putImage(source.getImage());
+//                db.setContent(cb);
+//                e.consume();
+//            });
+//        }
+
 
         for(int i=0; i<9; i++)
         {
@@ -94,9 +95,7 @@ public class Backyard implements Initializable {
                     addFunctionalities(source,target);
                 }
 
-<<<<<<< HEAD
-        });
-=======
+
 //                target.setOnDragOver(e -> {
 //                    if(e.getSource() != target && e.getDragboard().hasImage())
 //                    {
@@ -144,7 +143,7 @@ public class Backyard implements Initializable {
             }
         }.start();
 
->>>>>>> 5029d2c5229ef4abfa36e904eee3e31d74b8171a
+
         ZombieAppear a1 = new ZombieAppear(z1);
         ZombieAppear a2 = new ZombieAppear(z2);
         SunView sunView1  = new SunView(sun1);
