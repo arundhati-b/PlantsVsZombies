@@ -10,7 +10,7 @@
 
 <AnchorPane id="rootPane" fx:id="rootPane1" minHeight="602.0" prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.MainScreen">
   <children>
-    <ImageView id="mainscreenbg.jpg" fitHeight="602.0" fitWidth="1116.0" layoutX="0.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
+    <ImageView id="mainscreenbg.jpg" fitHeight="602.0" fitWidth="1116.0" layoutX="1.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
       <effect>
         <Glow level="0.19937106918238992" />
       </effect>
@@ -28,24 +28,29 @@
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="newgameBtn@3x.png" fx:id="newgameBtn" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="194.0" onMouseEntered="#p1" onMouseExited="#r1">
+    <ImageView id="newgameBtn@3x.png" fx:id="newgameBtn" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="190.0" onMouseClicked="#clickNewGame" onMouseEntered="#p1" onMouseExited="#r1">
       <image>
         <Image url="@resources/Buttons/newgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="loadgameBtn@3x.png" fx:id="loadgameBtn" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="272.0" onMouseEntered="#p2" onMouseExited="#r2">
+    <ImageView id="loadgameBtn@3x.png" fx:id="loadgameBtn" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="259.0" onMouseClicked="#clickLoadGame" onMouseEntered="#p2" onMouseExited="#r2">
       <image>
         <Image url="@resources/Buttons/loadgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboardBtn" fitHeight="60.0" fitWidth="204.0" layoutX="463.0" layoutY="350.0" onMouseClicked="#clickLeaderboard" onMouseEntered="#p3" onMouseExited="#r3">
+    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboardBtn" fitHeight="60.0" fitWidth="207.0" layoutX="461.0" layoutY="325.0" onMouseClicked="#clickLeaderboard" onMouseEntered="#p3" onMouseExited="#r3">
       <image>
         <Image url="@resources/Buttons/leaderboardBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="exitBtn@3x.png" fx:id="exitBtn" fitHeight="60.0" fitWidth="204.0" layoutX="465.0" layoutY="425.0" onMouseClicked="#clickExit" onMouseEntered="#p4" onMouseExited="#r4">
+    <ImageView id="exitBtn@3x.png" fx:id="exitBtn" fitHeight="56.0" fitWidth="197.0" layoutX="469.0" layoutY="449.0" onMouseClicked="#clickExit" onMouseEntered="#p5" onMouseExited="#r5">
       <image>
         <Image url="@resources/Buttons/exitBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="chooselevelBtn@3x.png" fx:id="chooseLevelBtn" fitHeight="49.0" fitWidth="216.0" layoutX="460.0" layoutY="393.0" onMouseEntered="#p4" onMouseExited="#r4">
+      <image>
+        <Image url="@resources/Buttons/chooselevelBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
   </children>

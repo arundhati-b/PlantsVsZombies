@@ -18,6 +18,7 @@ public class MainScreen {
     public ImageView newgameBtn;
     public ImageView loadgameBtn;
     public ImageView leaderboardBtn;
+    public ImageView chooseLevelBtn;
     public ImageView exitBtn;
     public AnchorPane rootPane1;
     public void p1()
@@ -46,11 +47,29 @@ public class MainScreen {
     }
     public void p4()
     {
-        exitBtn.setRotate(5);
+        chooseLevelBtn.setRotate(5);
     }
     public void r4()
     {
+        chooseLevelBtn.setRotate(0);
+    }
+    public void p5()
+    {
+        exitBtn.setRotate(5);
+    }
+    public void r5()
+    {
         exitBtn.setRotate(0);
+    }
+    public void clickNewGame() throws Exception
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
+        rootPane1.getChildren().setAll(pane);
+    }
+    public void clickLoadGame() throws Exception
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("emptySavedGamesMenu.fxml"));
+        rootPane1.getChildren().setAll(pane);
     }
     public void clickLeaderboard() throws Exception
     {
@@ -62,4 +81,5 @@ public class MainScreen {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("exitScreen.fxml"));
         rootPane1.getChildren().setAll(pane);
     }
+
 }

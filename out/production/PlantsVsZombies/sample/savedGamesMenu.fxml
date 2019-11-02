@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.SavedGamesMenu">
+  <children>
+    <ImageView id="mainscreenbg.jpg" fitHeight="602.0" fitWidth="1116.0" layoutX="0.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
+      <effect>
+        <GaussianBlur fx:id="x1" />
+      </effect>
+      <image>
+        <Image url="@resources/mainscreenbg.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="menuStand@3x.png" effect="$x1" fitHeight="520.0" fitWidth="366.0" layoutX="371.0" layoutY="83.0">
+      <image>
+        <Image url="@resources/Buttons/menuStand@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="loadgameBtn@3x.png" effect="$x1" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="272.0">
+      <image>
+        <Image url="@resources/Buttons/loadgameBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="leaderboardBtn@3x.png" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="463.0" layoutY="350.0">
+      <image>
+        <Image url="@resources/Buttons/leaderboardBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="exitBtn@3x.png" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="465.0" layoutY="425.0">
+      <image>
+        <Image url="@resources/Buttons/exitBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="newgameBtn@3x.png" effect="$x1" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="194.0">
+      <image>
+        <Image url="@resources/Buttons/newgameBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="title.png" effect="$x1" fitHeight="83.0" fitWidth="168.0" layoutX="473.0" layoutY="2.0">
+      <image>
+        <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="savedGameMenu@3x.png" fitHeight="453.0" fitWidth="674.0" layoutX="252.0" layoutY="37.0">
+      <effect>
+        <DropShadow />
+      </effect>
+      <image>
+        <Image url="@resources/Buttons/savedGameMenu@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="okBtn@3x.png" fx:id="okBtn" fitHeight="69.0" fitWidth="119.0" layoutX="435.0" layoutY="421.0" onMouseClicked="#clickOnOk">
+      <effect>
+        <DropShadow fx:id="x2" />
+      </effect>
+      <image>
+        <Image url="@resources/Buttons/okBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="cancelBtn@3x.png" fx:id="cancelBtn" fitHeight="68.9999771118164" fitWidth="143.0" layoutX="602.0" layoutY="421.0">
+      <effect>
+        <DropShadow />
+      </effect>
+      <image>
+        <Image url="@resources/Buttons/cancelBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+  </children>
+</AnchorPane>
