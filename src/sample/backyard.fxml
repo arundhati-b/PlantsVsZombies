@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="653.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Backyard">
+<AnchorPane fx:id="hello" prefHeight="653.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Backyard">
   <children>
     <ImageView id="backyard.jpg" layoutX="0.0" layoutY="51.0">
       <image>
-        <Image url="@resources/backyard.jpg" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/backyard.jpg" />
       </image>
     </ImageView>
     <ImageView fx:id="z1" layoutX="1126.0" layoutY="198.0">
@@ -48,7 +48,7 @@
     </ImageView>
     <ImageView id="UpperPanel2@3x.png" fitHeight="72.0" fitWidth="1116.0" layoutX="3.0" layoutY="-6.0">
       <image>
-        <Image url="@resources/Buttons/UpperPanel2@3x.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/Buttons/UpperPanel2@3x.png" />
       </image>
     </ImageView>
     <ImageView fx:id="lm5" layoutX="168.0" layoutY="511.0">
@@ -58,7 +58,7 @@
     </ImageView>
     <ImageView id="UpperPanel2@3x.png" fitHeight="100.0" fitWidth="650.0" layoutX="-277.0" layoutY="276.0" rotate="90.0">
       <image>
-        <Image url="@resources/Buttons/UpperPanel2@3x.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/Buttons/UpperPanel2@3x.png" />
       </image>
     </ImageView>
     <Label fx:id="sunCount" alignment="CENTER" layoutX="7.0" layoutY="607.0" prefHeight="39.0" prefWidth="79.0" text="100" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
@@ -147,7 +147,7 @@
         <DropShadow radius="97.75" width="255.0" />
       </effect>
       <image>
-        <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/title.png" />
       </image>
     </ImageView>
     <Label font="$x1" layoutX="6.0" layoutY="15.0" text="Score" textFill="WHITE" />
@@ -165,37 +165,37 @@
         <DropShadow fx:id="x2" />
       </effect>
       <image>
-        <Image url="@resources/CherryBomb.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/CherryBomb.png" />
       </image>
     </ImageView>
     <ImageView id="peashooter.png" effect="$x2" fitHeight="83.5" fitWidth="61.0" layoutX="20.0" layoutY="108.0">
       <image>
-        <Image url="@resources/peashooter.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/peashooter.png" />
       </image>
     </ImageView>
     <ImageView id="PotatoMine.png" effect="$x2" fitHeight="78.0" fitWidth="57.0" layoutX="23.0" layoutY="460.0">
       <image>
-        <Image url="@resources/PotatoMine.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/PotatoMine.png" />
       </image>
     </ImageView>
     <ImageView id="walnut.png" effect="$x2" fitHeight="78.0" fitWidth="57.0" layoutX="23.0" layoutY="375.0">
       <image>
-        <Image url="@resources/walnut.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/walnut.png" />
       </image>
     </ImageView>
     <ImageView id="sunflower.jpg" effect="$x2" fitHeight="83.5" fitWidth="61.0" layoutX="20.0" layoutY="196.0">
       <image>
-        <Image url="@resources/sunflower.jpg" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/sunflower.jpg" />
       </image>
     </ImageView>
     <ImageView id="peashooter.gif" fx:id="peashooter" fitHeight="45.0" fitWidth="41.0" layoutX="30.0" layoutY="123.0">
       <image>
-        <Image url="@resources/peashooter.gif" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/peashooter.gif" />
       </image>
     </ImageView>
     <ImageView id="SunFlower.gif" fx:id="sunflower" fitHeight="52.000099182128906" fitWidth="50.0" layoutX="24.0" layoutY="207.0">
       <image>
-        <Image url="@resources/SunFlower.gif" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@resources/SunFlower.gif" />
       </image>
     </ImageView>
   </children>

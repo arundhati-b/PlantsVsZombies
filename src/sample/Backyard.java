@@ -37,6 +37,8 @@ public class Backyard implements Initializable {
 //    @FXML
 //    ImageView cherrybomb;
     @FXML
+    AnchorPane hello;
+    @FXML
     ImageView z1;
     @FXML
     ImageView z2;
@@ -148,9 +150,16 @@ public class Backyard implements Initializable {
 //                pickedPlant.preserveRatioProperty();
                 target.getChildren().add(pickedPlant);
                 if(pickedPlant.getImage() == peashooter.getImage()) {
-                    System.out.println("hereee");
-                    time.schedule(new Pea(new ImageView("sample/resources/pea.png"), pickedPlant.getLayoutX(), pickedPlant.getLayoutY()), 0, 3000);
-//                System.out.println(target.getClass());
+                    ImageView p = new ImageView("sample/resources/pea.png");
+                    p.setVisible(true);
+                    p.setLayoutX(target.getLayoutX() + 10);
+                    p.setLayoutY(target.getLayoutY() + 5);
+                    p.setFitHeight(20);
+                    p.setFitWidth(20);
+                    System.out.println(p.getLayoutX() + " jajisbgaig " + p.getLayoutY() + p.getFitHeight() + p.getFitWidth());
+                    time.schedule( new Pea(p, target.getLayoutX(), target.getLayoutY()), 0);
+                    hello.getChildren().add(p);
+//
                 }
             }
             e.consume();

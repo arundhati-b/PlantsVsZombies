@@ -14,7 +14,6 @@ public class ProgBar extends TimerTask {
     @Override
     public void run() {
         count += 0.01;
-        System.out.println(count);
         pb.setProgress(count);
     }
 }

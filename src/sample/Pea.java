@@ -14,23 +14,19 @@ class Pea extends TimerTask {
     Pea(ImageView p, double x, double y){
 
         this.a = p;
-        this.x = x;
-        this.y = y;
-        System.out.println(x+" "+y);
-        a.setLayoutY(y);
-        a.setLayoutX(x);
-
+        this.x = x + 10;
+        this.y = y + 5;
+        a.setVisible(true);
 
     }
     public void  move() {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                a.setLayoutX(a.getLayoutX() + 1);
-                if(a.getLayoutY() > 600){
-
-                    a.setLayoutY(-100);
-                    a.setLayoutX(-100);
+                a.setLayoutX(a.getLayoutX() + 10);
+                if(a.getLayoutX() > 1000){
+                    a.setLayoutX(x);
+                    a.setLayoutY(y);
                 }
             }
         }.start();
