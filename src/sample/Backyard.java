@@ -2,6 +2,7 @@ package sample;
 
 
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import javax.swing.*;
+
 import java.net.URL;
 import java.util.*;
 import java.util.Timer;
@@ -169,9 +171,10 @@ public class Backyard implements Initializable {
     }
 
     @FXML
-    void clickOptions() throws Exception {
+    void clickOptions(ActionEvent event) throws Exception {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
         hello.getChildren().setAll(pane);
+        event.consume();
     }
 
 
