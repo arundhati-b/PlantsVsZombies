@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="1116.0" prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Backyard">
+<AnchorPane fx:id="hello" prefHeight="653.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Backyard">
   <children>
     <ImageView id="backyard.jpg" layoutX="0.0" layoutY="51.0">
       <image>
@@ -148,14 +148,14 @@
     </ProgressBar>
     <ImageView id="title.png" fitHeight="234.66668701171875" fitWidth="497.6666564941406" layoutX="331.0" layoutY="-87.0" scaleX="0.3" scaleY="0.3">
       <effect>
-        <DropShadow radius="123.34375" width="255.0" />
+        <DropShadow radius="125.171875" width="255.0" />
       </effect>
       <image>
         <Image preserveRatio="true" smooth="true" url="@resources/title.png" />
       </image>
     </ImageView>
-    <Label font="$x1" layoutX="7.0" layoutY="11.0" text="Score" textFill="WHITE" />
-    <Label fx:id="Score" font="$x1" layoutX="98.0" layoutY="13.0" text="0" textFill="WHITE" />
+    <Label font="$x1" layoutX="17.0" layoutY="8.0" text="Score" textFill="WHITE" />
+    <Label fx:id="Score" font="$x1" layoutX="108.0" layoutY="10.0" text="0" textFill="WHITE" />
     <ImageView id="sun1" fitHeight="65.0" fitWidth="67.0" layoutX="18.0" layoutY="503.0">
       <effect>
         <DropShadow />

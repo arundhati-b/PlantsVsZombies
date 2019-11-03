@@ -3,6 +3,7 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -96,8 +97,7 @@ public class Backyard implements Initializable {
 
     }
 
-    void addFunctionalities(final ImageView source, final VBox target)
-    {
+    void addFunctionalities(final ImageView source, final VBox target) {
         Timer time = new Timer();
         source.setOnDragDetected(e -> {
             System.out.println("Drag detected");
@@ -166,14 +166,17 @@ public class Backyard implements Initializable {
             }
             e.consume();
         });
-        }
-    @FXML
-    void clickOptions(MouseEvent e)
-    {
-        e.consume();
     }
-    void intializecells()
-    {
+
+    @FXML
+    void clickOptions() throws Exception {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
+        hello.getChildren().setAll(pane);
+    }
+
+
+
+    void intializecells() {
         cell = new VBox[9][5];
         cell[0][0] = vx00;
         cell[0][1] = vx01;

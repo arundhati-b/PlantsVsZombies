@@ -11,10 +11,6 @@ import java.io.IOException;
 
 
 public class MainScreen {
-//    final play;
-//    final load;
-//    final leaderBoard;
-//    final exit;
     public ImageView newgameBtn;
     public ImageView loadgameBtn;
     public ImageView leaderboardBtn;
