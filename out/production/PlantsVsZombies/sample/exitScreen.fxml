@@ -8,9 +8,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane3" minHeight="602.0" prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.ExitScreen">
+<AnchorPane fx:id="rootPane3" minHeight="645.0" prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.ExitScreen">
   <children>
-    <ImageView id="mainscreenbg.jpg" fitHeight="602.0" fitWidth="1116.0" layoutX="0.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
+    <ImageView id="mainscreenbg.jpg" fitHeight="645.0" fitWidth="1116.0" layoutX="0.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
       <effect>
         <GaussianBlur fx:id="x1" />
       </effect>
@@ -18,27 +18,27 @@
         <Image url="@resources/mainscreenbg.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="menuStand@3x.png" fx:id="menuStand" effect="$x1" fitHeight="520.0" fitWidth="366.0" layoutX="371.0" layoutY="83.0">
+    <ImageView id="menuStand@3x.png" fx:id="menuStand" effect="$x1" fitHeight="520.0" fitWidth="366.0" layoutX="371.0" layoutY="83.0" translateY="44.0">
       <image>
         <Image url="@resources/Buttons/menuStand@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="loadgameBtn@3x.png" fx:id="loadgame" effect="$x1" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="272.0">
+    <ImageView id="loadgameBtn@3x.png" fx:id="loadgame" effect="$x1" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="272.0" translateY="68.0">
       <image>
         <Image url="@resources/Buttons/loadgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboard" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="463.0" layoutY="350.0">
+    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboard" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="463.0" layoutY="350.0" translateY="68.0">
       <image>
         <Image url="@resources/Buttons/leaderboardBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="exitBtn@3x.png" fx:id="exit" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="465.0" layoutY="425.0">
+    <ImageView id="exitBtn@3x.png" fx:id="exit" effect="$x1" fitHeight="60.0" fitWidth="204.0" layoutX="465.0" layoutY="425.0" rotate="5.0" translateY="68.0">
       <image>
         <Image url="@resources/Buttons/exitBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="newgameBtn@3x.png" fx:id="newgame" effect="$x1" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="194.0">
+    <ImageView id="newgameBtn@3x.png" fx:id="newgame" effect="$x1" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="194.0" translateY="66.0">
       <image>
         <Image url="@resources/Buttons/newgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
@@ -51,7 +51,7 @@
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="exitScreenBox@3x.png" fitHeight="443.0" fitWidth="553.0" layoutX="300.0" layoutY="42.0">
+    <ImageView id="exitScreenBox@3x.png" fitHeight="443.0" fitWidth="553.0" layoutX="300.0" layoutY="42.0" translateY="44.0">
       <effect>
         <DropShadow />
       </effect>
@@ -64,12 +64,12 @@
         <Image url="@resources/Buttons/crossBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="noBtn@3x.png" fitHeight="52.0" fitWidth="81.0" layoutX="605.0" layoutY="423.0" onMouseClicked="#clickOnNo">
+    <ImageView id="noBtn@3x.png" fitHeight="52.0" fitWidth="81.0" layoutX="605.0" layoutY="423.0" onMouseClicked="#clickOnNo" translateY="44.0">
       <image>
         <Image url="@resources/Buttons/noBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="yesBtn@3x.png" fitHeight="52.0" fitWidth="81.0" layoutX="456.0" layoutY="423.0" onMouseClicked="#clickOnYes">
+    <ImageView id="yesBtn@3x.png" fitHeight="52.0" fitWidth="81.0" layoutX="456.0" layoutY="423.0" onMouseClicked="#clickOnYes" translateY="44.0">
       <image>
         <Image url="@resources/Buttons/yesBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>

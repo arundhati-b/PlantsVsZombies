@@ -12,8 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         primaryStage.setTitle("Plants Vs Zombies");
-        primaryStage.setScene(new Scene(root, 1116, 602));
-        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 1116, 645));
+//        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

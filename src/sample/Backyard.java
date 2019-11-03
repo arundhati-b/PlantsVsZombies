@@ -7,21 +7,21 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ProgressBar;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.*;
+import java.util.Timer;
 
 
 public class Backyard implements Initializable {
@@ -50,6 +50,8 @@ public class Backyard implements Initializable {
     ProgressBar pb;
     @FXML
     ImageView lm3;
+    @FXML
+    Button optionsBtn;
 
     @FXML
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
@@ -156,8 +158,11 @@ public class Backyard implements Initializable {
             e.consume();
         });
         }
-
-
+    @FXML
+    void clickOptions(MouseEvent e)
+    {
+        e.consume();
+    }
     void intializecells()
     {
         cell = new VBox[9][5];
