@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane fx:id="optionPane" onMouseClicked="#clickLoadGame" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Options">
+<AnchorPane fx:id="optionPane" onMouseClicked="#clickLoadGame" prefHeight="612.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Options">
    <children>
-      <Button fx:id="saveGame" layoutX="253.0" layoutY="91.0" mnemonicParsing="false" text="Save Game" />
-      <Button fx:id="quit" layoutX="273.0" layoutY="208.0" mnemonicParsing="false" onMouseClicked="#clickExit" text="Quit" />
-      <Button fx:id="load" layoutX="253.0" layoutY="150.0" mnemonicParsing="false" text="Load Game" />
-      <Button fx:id="back" layoutX="471.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#backToGame" text="Back to Game" />
+      <ImageView fitHeight="613.0" fitWidth="1116.0" layoutY="-2.0">
+         <image>
+            <Image url="@resources/mainscreenbg.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="saveGame" layoutX="417.0" layoutY="221.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="242.0" text="Save Game" />
+      <Button fx:id="quit" layoutX="493.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#clickExit" opacity="0.0" prefHeight="72.0" prefWidth="214.0" text="Exit" />
+      <Button fx:id="load" layoutX="336.0" layoutY="85.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="189.0" text="Load Game" />
+      <Button fx:id="back" layoutX="712.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#backToGame" prefHeight="68.0" prefWidth="142.0" text="Back to Game" />
+      <ImageView fitHeight="72.0" fitWidth="227.0" layoutX="612.0" layoutY="362.0">
+         <image>
+            <Image url="@resources/Buttons/exitBtn@3x.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="240.0" layoutX="308.0" layoutY="63.0">
+         <image>
+            <Image url="@resources/Buttons/loadgameBtn@3x.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="883.0" layoutY="39.0">
+         <image>
+            <Image url="@resources/Buttons/cancelBtn@3x.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
