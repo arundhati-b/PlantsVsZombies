@@ -13,7 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         primaryStage.setTitle("Plants Vs Zombies");
         primaryStage.setScene(new Scene(root, 1116, 645));
-//        primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

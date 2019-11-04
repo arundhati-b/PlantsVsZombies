@@ -35,10 +35,6 @@ public class Backyard implements Initializable {
     ImageView sunflower;
     @FXML
     Label Score,sunCount;
-//    @FXML
-//    ImageView walnut;
-//    @FXML
-//    ImageView cherrybomb;
     @FXML
     AnchorPane hello;
     @FXML
