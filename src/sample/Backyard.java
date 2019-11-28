@@ -83,15 +83,15 @@ public class Backyard implements Initializable {
 
         ZombieAppear a1 = new ZombieAppear(z1);
         ZombieAppear a2 = new ZombieAppear(z2);
-        SunView sunView1  = new SunView(sun1);
+        SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
         LawnMower landMower3 = new LawnMower(lm3);
-          Timer time = new Timer();
-          time.schedule(a1, 1000);
-          time.schedule(a2, 5000);
-          time.schedule(sunView1, 8000);
-          time.schedule(progressbar, 1000, 1000);
-          time.schedule(landMower3, 100);
+        Timer time = new Timer();
+        time.schedule(a1, 1000);
+        time.schedule(a2, 5000);
+        time.schedule(sunView1, 8000);
+        time.schedule(progressbar, 1000, 1000);
+        time.schedule(landMower3, 100);
 
     }
 
