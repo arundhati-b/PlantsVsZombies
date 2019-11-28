@@ -59,6 +59,7 @@ public class MainScreen {
     }
     public void clickNewGame() throws Exception
     {
+//        throw new Exception();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
         rootPane1.getChildren().setAll(pane);
     }
