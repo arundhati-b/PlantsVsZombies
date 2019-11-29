@@ -5,4 +5,9 @@ public class Level3 extends Level {
     public String toString() {
         return "Level3";
     }
+
+    @Override
+    public void play() throws GameLostException {
+
+    }
 }

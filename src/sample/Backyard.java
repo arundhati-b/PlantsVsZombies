@@ -151,9 +151,6 @@ public class Backyard implements Initializable {
                     pickedPlant.setImage(((ImageView)s).getImage());
                 else
                     pickedPlant.setImage(db.getImage());
-
-//                System.out.println(s.getClass());
-//                pickedPlant.setImage(db.getImage());
                 pickedPlant.setPreserveRatio(true);
                 pickedPlant.fitWidthProperty().bind(target.widthProperty());
                 pickedPlant.fitHeightProperty().bind(target.heightProperty());

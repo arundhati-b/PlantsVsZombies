@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import java.util.Random;
 import java.util.TimerTask;
 
-public class ZombieAppear extends TimerTask {
+public class ZombieAppear extends TimerTask  {
     int health = 30;
     AnimationTimer t;
     public void  move(ImageView a) {
