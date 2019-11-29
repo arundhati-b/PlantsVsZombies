@@ -11,14 +11,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-            Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
             primaryStage.setTitle("Plants Vs Zombies");
             primaryStage.setScene(new Scene(root, 1116, 645));
             primaryStage.setResizable(false);
             primaryStage.show();
 
-
     }
+
+
 
 
     public static void main(String[] args) {

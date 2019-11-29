@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="rootPane" fx:id="loadPane" minHeight="645.0" prefHeight="602.0" prefWidth="1116.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.loginOption">
+  <children>
+    <ImageView id="mainscreenbg.jpg" fitHeight="645.0" fitWidth="1116.0" layoutX="1.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
+      <effect>
+        <Glow level="0.19937106918238992" />
+      </effect>
+      <image>
+        <Image url="@resources/mainscreenbg.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="title.png" fitHeight="83.0" fitWidth="168.0" layoutX="473.0" layoutY="2.0" visible="true">
+      <image>
+        <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="menuBox1@3x.png" fitHeight="574.6666259765625" fitWidth="708.0" layoutX="199.0" layoutY="50.0" scaleX="0.75" scaleY="0.75">
+      <image>
+        <Image url="@resources/Buttons/menuBox1@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label contentDisplay="CENTER" layoutX="460.0" layoutY="137.0" prefHeight="67.0" prefWidth="214.83203125" rotate="357.0" text="New user" textAlignment="CENTER" textFill="WHITE">
+      <font>
+        <Font name="Bukhari Script" size="45.0" />
+      </font>
+    </Label>
+    <ImageView id="tickBtn@3x.png" fx:id="tick" fitHeight="65.0" fitWidth="100.0" layoutX="423.0" layoutY="436.0" onMouseClicked="#ticked">
+      <image>
+        <Image url="@resources/Buttons/tickBtn@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="crossBtn2@3x.png" fx:id="cross" fitHeight="65.00009999999747" fitWidth="104.0" layoutX="589.0" layoutY="436.0" onMouseClicked="#crossed">
+      <image>
+        <Image url="@resources/Buttons/crossBtn2@3x.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label layoutX="400.0" layoutY="296.0" text="Enter username:" textAlignment="CENTER" textFill="WHITE">
+      <font>
+        <Font name="Bukhari Script" size="42.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TextField focusTraversable="true" layoutX="402.0" layoutY="369.0" prefHeight="42.0" prefWidth="304.0" visible="true" />
+  </children>
+</AnchorPane>

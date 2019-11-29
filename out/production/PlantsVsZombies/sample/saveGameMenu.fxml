@@ -108,11 +108,6 @@
         <Image url="@resources/Buttons/optionsBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label layoutX="510.0" layoutY="209.0" textFill="WHITE">
-      <font>
-        <Font name="Bukhari Script" size="40.0" />
-      </font>
-    </Label>
     <ImageView id="saveGameMenu@3x.png" fitHeight="474.0" fitWidth="619.0" layoutX="281.0" layoutY="104.0">
       <image>
         <Image url="@resources/Buttons/saveGameMenu@3x.png" preserveRatio="true" smooth="true" />
