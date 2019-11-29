@@ -62,9 +62,11 @@ public class Backyard implements Initializable {
     private VBox cell[][];
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         Level l = Game.getInstance().getLevel();
 
         System.out.println("In Backyard at level: "+l.getLvlNo());
+
         zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();
@@ -85,16 +87,46 @@ public class Backyard implements Initializable {
             }
         }
         Random r = new Random();
-        Zombie t1 = new ZombieNormal();
-        int ran1 = r.nextInt(10) + 5;
-        System.out.println("ran1 "+ran1);
-        for(int j = 0; j < ran1; j++) {
-            ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
-            temp.a.setLayoutX(1500);
-            temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-            System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
-            hello.getChildren().addAll(temp.a);
-            zombieApp.add(temp);
+        for(int i = 0; i < l.lvlNo; i++){
+            if( i == 0 ){
+                Zombie t1 = new ZombieNormal();
+                int ran1 = r.nextInt(l.top) + l.below;
+                System.out.println("ran1 "+ran1);
+                for(int j = 0; j < ran1; j++) {
+                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+                    temp.a.setLayoutX(1500);
+                    temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+                    hello.getChildren().addAll(temp.a);
+                    zombieApp.add(temp);
+                }
+            }
+            else if (i == 1){
+                Zombie t1 = new ZombieCone();
+                int ran1 = r.nextInt(l.top) + l.below;
+                System.out.println("ran1 "+ran1);
+                for(int j = 0; j < ran1; j++) {
+                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+                    temp.a.setLayoutX(1500);
+                    temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+                    hello.getChildren().addAll(temp.a);
+                    zombieApp.add(temp);
+                }
+            }
+            else if (i == 1){
+                Zombie t1 = new ZombieCone();
+                int ran1 = r.nextInt(10) + 5;
+                System.out.println("ran1 "+ran1);
+                for(int j = 0; j < ran1; j++) {
+                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+                    temp.a.setLayoutX(1500);
+                    temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+                    hello.getChildren().addAll(temp.a);
+                    zombieApp.add(temp);
+                }
+            }
         }
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
