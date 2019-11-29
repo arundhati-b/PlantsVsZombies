@@ -15,7 +15,7 @@ class Pea extends TimerTask {
 
         this.a = p;
         this.x = x + 10;
-        this.y = y + 5;
+        this.y = y;
         a.setVisible(true);
 
     }

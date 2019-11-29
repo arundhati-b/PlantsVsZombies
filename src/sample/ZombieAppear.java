@@ -9,15 +9,12 @@ import java.util.TimerTask;
 
 public class ZombieAppear extends TimerTask {
     Random rand = new Random();
+    int health;
     public void  move(ImageView a) {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                a.setLayoutX(a.getLayoutX() - 1);
-                if(a.getLayoutX() < 100){
-                    a.setLayoutX(1300);
-                    a.setLayoutY(rand.nextInt(300) + 200);
-                }
+                a.setLayoutX(a.getLayoutX() - 0.5);
             }
         }.start();
     }

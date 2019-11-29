@@ -20,8 +20,6 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import javax.swing.*;
-
 import java.net.URL;
 import java.util.*;
 import java.util.Timer;
@@ -79,20 +77,32 @@ public class Backyard implements Initializable {
                 }
             }
         }
+        Random r = new Random();
+        int[] pos = {90 ,200, 310, 420,500};     //Array of possible positions of Y axis
+        int ran1 = r.nextInt(8) + 11;
+        int ran2 = r.nextInt(8) + 11;
+        ArrayList<ZombieAppear> zombie1 = new ArrayList<>();
+        // Adding random zombies
+        for(int i = 0; i < ran1; i++){
+            ImageView temp = new ImageView("sample/resources/Zombie_Walk.gif");
+            temp.setLayoutX(1500);
+            temp.setLayoutY(pos[r.nextInt(pos.length)]);
+            zombie1.add(new ZombieAppear(temp) );
+            hello.getChildren().add(temp);
+        }
 
 
-        ZombieAppear a1 = new ZombieAppear(z1);
-        ZombieAppear a2 = new ZombieAppear(z2);
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
-        LawnMower landMower3 = new LawnMower(lm3);
         Timer time = new Timer();
-        time.schedule(a1, 1000);
-        time.schedule(a2, 5000);
+        int c = 0;
+        for(ZombieAppear z : zombie1){
+            c += r.nextInt(5000) + 2000;
+            time.schedule(z, c);
+        }
+
         time.schedule(sunView1, 8000);
         time.schedule(progressbar, 1000, 1000);
-        time.schedule(landMower3, 100);
-
     }
 
     void addFunctionalities(final ImageView source, final VBox target) {
@@ -172,7 +182,6 @@ public class Backyard implements Initializable {
         hello.getChildren().setAll(pane);
         event.consume();
     }
-
 
 
     void intializecells() {
