@@ -45,6 +45,8 @@ public class selectPlayer implements Initializable {
     public void ticked() throws IOException
     {
         RadioButton rb = (RadioButton) tg.getSelectedToggle();
+        if(rb == null)
+            return;
         String n = rb.getText();
 //        Main.deserialize(n);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));

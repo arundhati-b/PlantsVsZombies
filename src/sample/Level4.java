@@ -1,11 +1,11 @@
 package sample;
 
 public class Level4 extends Level{
-    @Override
-    public void play() throws GameLostException
-    {
 
+    Level4(int top, int below) {
+        super(top, below,4);
     }
+
     @Override
     public String toString() {
         return "Level4";

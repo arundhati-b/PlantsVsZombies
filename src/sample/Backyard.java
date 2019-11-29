@@ -26,7 +26,7 @@ import java.util.Timer;
 
 
 public class Backyard implements Initializable {
-    public static ArrayList<ZombieAppear> zombieApp = new ArrayList<>();
+    public static ArrayList<ZombieAppear> zombieApp;
     @FXML
     ImageView peashooter;
     @FXML
@@ -58,7 +58,8 @@ public class Backyard implements Initializable {
     private VBox cell[][];
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        Level1 l = new Level1(10,2);
+        zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();
         sources.add(peashooter);
@@ -78,24 +79,23 @@ public class Backyard implements Initializable {
             }
         }
         Random r = new Random();
-        int[] pos = {90 ,200, 310, 420,500};     //Array of possible positions of Y axis
-        int ran1 = r.nextInt(1) + 11;
-        int ran2 = r.nextInt(8) + 11;
-        // Adding random zombies
-        for(int i = 0; i < ran1; i++){
-            ImageView temp = new ImageView("sample/resources/Zombie_Walk.gif");
-            temp.setLayoutX(1500);
-            temp.setLayoutY(pos[r.nextInt(pos.length)]);
-            zombieApp.add(new ZombieAppear(temp) );
-            System.out.println(temp.getX() + " " + temp.getY());
-            hello.getChildren().add(temp);
+        Zombie t1 = new ZombieNormal();
+        int ran1 = r.nextInt(10) + 5;
+        System.out.println("ran1 "+ran1);
+        for(int j = 0; j < ran1; j++) {
+            ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+            temp.a.setLayoutX(1500);
+            temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+            System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+            hello.getChildren().addAll(temp.a);
+            zombieApp.add(temp);
         }
-
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
         Timer time = new Timer();
         int c = 0;
         for(ZombieAppear z : zombieApp){
+            System.out.println("Here");
             c += r.nextInt(5000) + 2000;
             time.schedule(z, c);
         }
@@ -163,7 +163,6 @@ public class Backyard implements Initializable {
                     p.setLayoutY(target.getLayoutY() + 5);
                     p.setFitHeight(20);
                     p.setFitWidth(20);
-//                    System.out.println(p.getLayoutX() + " jajisbgaig " + p.getLayoutY() + p.getFitHeight() + p.getFitWidth());
                     Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY());
                     shotPea.add(temp);
                     time.schedule( temp , 0);
