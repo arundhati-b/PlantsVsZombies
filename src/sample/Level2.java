@@ -11,8 +11,4 @@ public class Level2 extends Level {
         return "Level2";
     }
 
-    @Override
-    public void play() throws GameLostException {
-
-    }
 }
