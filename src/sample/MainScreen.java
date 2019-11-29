@@ -2,21 +2,26 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class MainScreen {
+public class MainScreen implements Initializable {
     public ImageView newgameBtn;
     public ImageView loadgameBtn;
     public ImageView leaderboardBtn;
     public ImageView chooseLevelBtn;
     public ImageView exitBtn;
     public AnchorPane rootPane1;
+    public Label uname;
     public void p1()
     {
         newgameBtn.setRotate(5);
@@ -56,6 +61,11 @@ public class MainScreen {
     public void r5()
     {
         exitBtn.setRotate(0);
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        uname.setText(Main.game.getPlayer().getName());
     }
     public void clickNewGame() throws Exception
     {
