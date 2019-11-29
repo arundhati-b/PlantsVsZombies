@@ -80,7 +80,7 @@ public class MainScreen implements Initializable {
     }
     public void clickLeaderboard() throws Exception
     {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("emptyLeaderboard.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Leaderboard.fxml"));
         rootPane1.getChildren().setAll(pane);
     }
     public void clickExit() throws Exception
