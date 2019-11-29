@@ -106,27 +106,27 @@ public class Backyard implements Initializable {
                     zombieApp.add(temp);
                 }
             }
-            else if (i == 1){
-                Zombie t1 = new ZombieCone();
-                int ran1 = r.nextInt(10) + 5;
-                System.out.println("ran1 "+ran1);
-                for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
-                    temp.a.setLayoutX(1500);
-                    temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
-                    hello.getChildren().addAll(temp.a);
-                    zombieApp.add(temp);
-                }
+            else if (i == 2){
+
             }
+            else if (i == 3){
+
+            }
+            else if (i == 4){
+
+            }
+
+
         }
+
+
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
         Timer time = new Timer();
         int c = 0;
         for(ZombieAppear z : zombieApp){
             System.out.println("Here");
-            c += r.nextInt(5000) + 2000;
+            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
             time.schedule(z, c);
         }
 
