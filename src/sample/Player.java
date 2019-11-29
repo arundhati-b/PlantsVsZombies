@@ -17,7 +17,7 @@ public final class Player implements Serializable {
         game = g;
         players.put(name,this);
         score = 0;
-        highestLevel = 1;
+        highestLevel = 4;
     }
     @Override
     public boolean equals(Object o)

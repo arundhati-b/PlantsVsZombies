@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static Game game;
+    public Game game;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,13 +24,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-
-
-    public static void setGame(Game g)
-    {
-        game = g;
     }
 
     void serialize()
