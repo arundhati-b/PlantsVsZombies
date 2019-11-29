@@ -7,8 +7,9 @@ import java.util.Map;
 
 public abstract class Level implements Serializable {
 
-    ArrayList<Plant> availablePlants = new ArrayList<Plant>();
+    ArrayList<Plant> currentPlants = new ArrayList<Plant>();
     ArrayList<Zombie> activeZombies = new ArrayList<Zombie>();
+    ArrayList<Zombie> availableZombies = new ArrayList<Zombie>();
     Map<Cell,Plant> cells = new HashMap<Cell,Plant>();
     int sunCount;
     int levelScore;
