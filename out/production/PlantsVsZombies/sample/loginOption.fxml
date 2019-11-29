@@ -49,6 +49,6 @@
         <Font name="Bukhari Script" size="42.0" fx:id="x1" />
       </font>
     </Label>
-    <TextField focusTraversable="true" layoutX="402.0" layoutY="369.0" prefHeight="42.0" prefWidth="304.0" visible="true" />
+    <TextField fx:id="usernameField" disable="false" editable="true" focusTraversable="true" layoutX="402.0" layoutY="369.0" mouseTransparent="false" prefHeight="42.0" prefWidth="304.0" promptText="username" visible="true" />
   </children>
 </AnchorPane>

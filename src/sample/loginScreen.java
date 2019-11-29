@@ -15,7 +15,7 @@ public class loginScreen {
 
     public void selectYes() throws IOException
     {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("selectPlayer.fxml"));
         loadPane.getChildren().setAll(pane);
     }
     public void selectNo() throws IOException

@@ -1,4 +1,4 @@
 package sample;
 
-public class Zombie {
+public abstract class Zombie {
 }
