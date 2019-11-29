@@ -1,19 +1,13 @@
 package sample;
 
-public class Level1 extends Level {
-
-    Level1()
-    {
-
-    }
+public class Level5 extends Level{
     @Override
     public void play()
     {
 
     }
-
     @Override
     public String toString() {
-        return "Level1";
+        return "Level5";
     }
 }

@@ -1,18 +1,19 @@
 package sample;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class Player {
-    public static Map<Player,Game> players = new HashMap<Player,Game>();
+public final class Player implements Serializable {
+    public static Map<String,Player> players = new HashMap<String,Player>();
     private String name;
     private Game game;
-    Player(String n)
+    Player(String n, Game g)
     {
         name = n;
-        game = new Game(this);
-        players.put(this,game);
+        game = g;
+        players.put(name,this);
     }
     @Override
     public boolean equals(Object o)
