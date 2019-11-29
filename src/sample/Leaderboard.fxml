@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -64,5 +65,13 @@
         <Image url="@resources/Buttons/okBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
+    <ScrollPane hbarPolicy="NEVER" layoutX="385.0" layoutY="221.0" prefHeight="223.0" prefWidth="338.0" styleClass="viewport">
+      <content>
+        <VBox fx:id="vb" prefHeight="223.0" prefWidth="338.0" />
+      </content>
+      <stylesheets>
+        <URL value="@style.css" />
+      </stylesheets>
+    </ScrollPane>
   </children>
 </AnchorPane>
