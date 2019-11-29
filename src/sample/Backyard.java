@@ -120,14 +120,21 @@ public class Backyard implements Initializable {
                     zombieApp.add(temp);
                 }
             }
+
+
         }
+
+
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
         Timer time = new Timer();
         int c = 0;
         for(ZombieAppear z : zombieApp){
             System.out.println("Here");
-            c += r.nextInt(5000) + 2000;
+            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+            if(c > 50000000){
+                c = 0;
+            }
             time.schedule(z, c);
         }
 
