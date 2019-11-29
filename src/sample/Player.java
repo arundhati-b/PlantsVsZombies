@@ -9,11 +9,15 @@ public final class Player implements Serializable {
     public static Map<String,Player> players = new HashMap<String,Player>();
     private String name;
     private Game game;
+    private int score;
+    private int highestLevel;
     Player(String n, Game g)
     {
         name = n;
         game = g;
         players.put(name,this);
+        score = 0;
+        highestLevel = 1;
     }
     @Override
     public boolean equals(Object o)
@@ -36,5 +40,13 @@ public final class Player implements Serializable {
     }
     public Game getGame() {
         return game;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getHighestLevel() {
+        return highestLevel;
     }
 }

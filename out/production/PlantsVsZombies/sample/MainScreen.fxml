@@ -29,29 +29,24 @@
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="newgameBtn@3x.png" fx:id="newgameBtn" fitHeight="69.0" fitWidth="236.0" layoutX="447.0" layoutY="234.0" onMouseClicked="#clickNewGame" onMouseEntered="#p1" onMouseExited="#r1" translateY="0.0">
+    <ImageView id="newgameBtn@3x.png" fx:id="newgameBtn" fitHeight="83.0" fitWidth="236.0" layoutX="447.0" layoutY="234.0" onMouseClicked="#clickNewGame" onMouseEntered="#p1" onMouseExited="#r1" translateY="0.0">
       <image>
         <Image url="@resources/Buttons/newgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="loadgameBtn@3x.png" fx:id="loadgameBtn" fitHeight="61.0" fitWidth="223.0" layoutX="456.0" layoutY="303.0" onMouseClicked="#clickLoadGame" onMouseEntered="#p2" onMouseExited="#r2" translateY="0.0">
+    <ImageView id="loadgameBtn@3x.png" fx:id="loadgameBtn" fitHeight="70.0" fitWidth="223.0" layoutX="453.0" layoutY="323.0" onMouseClicked="#clickLoadGame" onMouseEntered="#p2" onMouseExited="#r2" translateY="0.0">
       <image>
         <Image url="@resources/Buttons/loadgameBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboardBtn" fitHeight="60.0" fitWidth="207.0" layoutX="461.0" layoutY="369.0" onMouseClicked="#clickLeaderboard" onMouseEntered="#p3" onMouseExited="#r3" translateY="0.0">
+    <ImageView id="leaderboardBtn@3x.png" fx:id="leaderboardBtn" fitHeight="70.0" fitWidth="207.0" layoutX="461.0" layoutY="400.0" onMouseClicked="#clickLeaderboard" onMouseEntered="#p3" onMouseExited="#r3" translateY="0.0">
       <image>
         <Image url="@resources/Buttons/leaderboardBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="exitBtn@3x.png" fx:id="exitBtn" fitHeight="56.0" fitWidth="197.0" layoutX="469.0" layoutY="493.0" onMouseClicked="#clickExit" onMouseEntered="#p5" onMouseExited="#r5" translateY="0.0">
+    <ImageView id="exitBtn@3x.png" fx:id="exitBtn" fitHeight="61.3250732421875" fitWidth="197.0" layoutX="469.0" layoutY="479.0" onMouseClicked="#clickExit" onMouseEntered="#p5" onMouseExited="#r5" translateY="0.0">
       <image>
         <Image url="@resources/Buttons/exitBtn@3x.png" preserveRatio="true" smooth="true" />
-      </image>
-    </ImageView>
-    <ImageView id="chooselevelBtn@3x.png" fx:id="chooseLevelBtn" fitHeight="49.0" fitWidth="216.0" layoutX="460.0" layoutY="437.0" onMouseEntered="#p4" onMouseExited="#r4" translateY="0.0">
-      <image>
-        <Image url="@resources/Buttons/chooselevelBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <ImageView id="usernameBox@3x.png" fitHeight="155.0" fitWidth="312.0" layoutX="23.0" layoutY="-10.0">
@@ -64,7 +59,7 @@
     </ImageView>
     <Label fx:id="uname" alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="89.0" prefHeight="47.0" prefWidth="207.0" rotate="356.0" text="Name" textAlignment="CENTER" textFill="#bcff66">
       <font>
-        <Font name="Bukhari Script" size="36.0" />
+        <Font name="Rockwell" size="36.0" />
       </font>
     </Label>
   </children>
