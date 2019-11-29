@@ -2,7 +2,9 @@ package sample;
 
 import javafx.scene.image.ImageView;
 
-public class ZombieCone{
-    static ImageView temp = new ImageView("sample/resources/Zombie_Walk.gif");
+public class ZombieCone extends Zombie{
 
+    ZombieCone() {
+        super("sample/resources/Zombie_Normal.gif", 60, 0.5);
+    }
 }
