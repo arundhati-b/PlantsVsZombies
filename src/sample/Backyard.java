@@ -135,6 +135,9 @@ public class Backyard implements Initializable {
         for(ZombieAppear z : zombieApp){
             System.out.println("Here");
             c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+            if(c > 50000000){
+                c = 0;
+            }
             time.schedule(z, c);
         }
 
