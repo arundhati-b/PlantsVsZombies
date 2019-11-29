@@ -1,4 +1,4 @@
 package sample;
 
-public class Level {
+public abstract class Level {
 }
