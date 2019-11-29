@@ -26,7 +26,7 @@ import java.util.Timer;
 
 
 public class Backyard implements Initializable {
-
+    public static ArrayList<ZombieAppear> zombieApp = new ArrayList<>();
     @FXML
     ImageView peashooter;
     @FXML
@@ -63,7 +63,7 @@ public class Backyard implements Initializable {
         ArrayList<ImageView> sources = new ArrayList<>();
         sources.add(peashooter);
         sources.add(sunflower);
-
+        ArrayList<Pea> shotPeas = new ArrayList<>();
 
         for(int i=0; i<9; i++)
         {
@@ -73,42 +73,42 @@ public class Backyard implements Initializable {
                 for (int k=0; k<sources.size(); k++)
                 {
                     final ImageView source = sources.get(k);
-                    addFunctionalities(source,target);
+                    addFunctionalities(source,target, shotPeas);
                 }
             }
         }
         Random r = new Random();
         int[] pos = {90 ,200, 310, 420,500};     //Array of possible positions of Y axis
-        int ran1 = r.nextInt(8) + 11;
+        int ran1 = r.nextInt(1) + 11;
         int ran2 = r.nextInt(8) + 11;
-        ArrayList<ZombieAppear> zombie1 = new ArrayList<>();
         // Adding random zombies
         for(int i = 0; i < ran1; i++){
             ImageView temp = new ImageView("sample/resources/Zombie_Walk.gif");
             temp.setLayoutX(1500);
             temp.setLayoutY(pos[r.nextInt(pos.length)]);
-            zombie1.add(new ZombieAppear(temp) );
+            zombieApp.add(new ZombieAppear(temp) );
+            System.out.println(temp.getX() + " " + temp.getY());
             hello.getChildren().add(temp);
         }
-
 
         SunView sunView1  = new SunView(sun1, sunCount);
         ProgBar progressbar = new ProgBar(pb);
         Timer time = new Timer();
         int c = 0;
-        for(ZombieAppear z : zombie1){
+        for(ZombieAppear z : zombieApp){
             c += r.nextInt(5000) + 2000;
             time.schedule(z, c);
         }
 
         time.schedule(sunView1, 8000);
         time.schedule(progressbar, 1000, 1000);
+
     }
 
-    void addFunctionalities(final ImageView source, final VBox target) {
+    void addFunctionalities(final ImageView source, final VBox target, ArrayList<Pea> shotPea) {
         Timer time = new Timer();
         source.setOnDragDetected(e -> {
-            System.out.println("Drag detected");
+//            System.out.println("Drag detected");
 
             Dragboard db = source.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent cb = new ClipboardContent();
@@ -118,11 +118,11 @@ public class Backyard implements Initializable {
         });
 
         target.setOnDragOver(e -> {
-            System.out.println("Dragged over");
+//            System.out.println("Dragged over");
 
             if(e.getDragboard().hasImage())
             {
-                System.out.println("here");
+//                System.out.println("here");
                 e.acceptTransferModes(TransferMode.ANY);
                 target.setStyle("-fx-background-color: rgb(0,0,0,0.3)");
             }
@@ -130,7 +130,7 @@ public class Backyard implements Initializable {
         });
 
         target.setOnDragExited(e -> {
-            System.out.println("Drag exited");
+//            System.out.println("Drag exited");
 
             target.setBackground(Background.EMPTY);
 //            target.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -139,7 +139,7 @@ public class Backyard implements Initializable {
         });
 
         target.setOnDragDropped(e -> {
-            System.out.println("Drag dropped");
+//            System.out.println("Drag dropped");
             e.acceptTransferModes(TransferMode.ANY);
 
             Dragboard db = e.getDragboard();
@@ -152,7 +152,7 @@ public class Backyard implements Initializable {
                 else
                     pickedPlant.setImage(db.getImage());
 
-                System.out.println(s.getClass());
+//                System.out.println(s.getClass());
 //                pickedPlant.setImage(db.getImage());
                 pickedPlant.setPreserveRatio(true);
                 pickedPlant.fitWidthProperty().bind(target.widthProperty());
@@ -166,10 +166,11 @@ public class Backyard implements Initializable {
                     p.setLayoutY(target.getLayoutY() + 5);
                     p.setFitHeight(20);
                     p.setFitWidth(20);
-                    System.out.println(p.getLayoutX() + " jajisbgaig " + p.getLayoutY() + p.getFitHeight() + p.getFitWidth());
-                    time.schedule( new Pea(p, target.getLayoutX(), target.getLayoutY()), 0);
+//                    System.out.println(p.getLayoutX() + " jajisbgaig " + p.getLayoutY() + p.getFitHeight() + p.getFitWidth());
+                    Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY());
+                    shotPea.add(temp);
+                    time.schedule( temp , 0);
                     hello.getChildren().add(p);
-//
                 }
             }
             e.consume();

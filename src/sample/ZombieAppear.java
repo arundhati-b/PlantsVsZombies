@@ -8,20 +8,27 @@ import java.util.Random;
 import java.util.TimerTask;
 
 public class ZombieAppear extends TimerTask {
-    Random rand = new Random();
-    int health;
+    int health = 30;
+    AnimationTimer t;
     public void  move(ImageView a) {
-        new AnimationTimer() {
+        t = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 a.setLayoutX(a.getLayoutX() - 0.5);
             }
-        }.start();
+        };
+        t.start();
     }
 
     ZombieAppear(ImageView a){
         this.a = a;
     }
+
+    void kill(){
+        t.stop();
+        a.setVisible(false);
+    }
+
     ImageView a;
 
     @Override
