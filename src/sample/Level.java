@@ -17,39 +17,14 @@ public abstract class Level implements Serializable {
     static public ArrayList<ZombieAppear> zombieApp;
     Map<Cell,Plant> cells = new HashMap<Cell,Plant>();
     int sunCount;
+    int below;
+    int top;
     int levelScore;
     int lvlNo;
     Level(int top, int below, int lveNo) {
-        Backyard.zombieApp = new ArrayList<>();
-        sunCount = 100;
-        levelScore = 0;
         this.lvlNo = lveNo;
-        Random rand = new Random();
-        for(int i = 0; i < lveNo; i++){
-            System.out.println("i");
-            int ran1 = rand.nextInt(top) + below;
-
-            if(i == 0){
-                Zombie t1 = new ZombieNormal();
-                for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
-                    temp.a.setLayoutX(1500);
-                    temp.a.setLayoutY(pos[rand.nextInt(pos.length)]);
-                    System.out.println(temp.a.getX() + " " + temp.a.getY());
-                    Backyard.zombieApp.add(temp);
-                }
-            }
-            else if (i == 1){
-                Zombie t2 = new ZombieNormal();
-                for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t2.image), t2.health, t2.speed);
-                    temp.a.setLayoutX(1500);
-                    temp.a.setLayoutY(pos[rand.nextInt(pos.length)]);
-                    System.out.println(temp.a.getX() + " " + temp.a.getY());
-                    Backyard.zombieApp.add(temp);
-                }
-            }
-        }
+        this.below = below;
+        this.top = top;
     }
 
     public int getLvlNo()
