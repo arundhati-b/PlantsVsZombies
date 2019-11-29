@@ -1,20 +1,21 @@
 package sample;
 
 public class Game {
-    Player player;
-    Level level;
-    int totalScore;
+    private Player player;
+    private Level level;
+    private int totalScore;
+    private transient static Game game;
 
-    Game(String p)
+    private Game(String p)
     {
         player = new Player(p,this);
 //        level = new Level1();
         totalScore = 0;
     }
 
-    public String getLevel()
+    public Level getLevel()
     {
-        return level.toString();
+        return level;
     }
     public void setLevel(Level i)
     {
@@ -23,6 +24,23 @@ public class Game {
     public Player getPlayer()
     {
         return player;
+    }
+
+    public static Game getInstance()
+    {
+        return game;
+    }
+
+    public static Game getInstance(String p)
+    {
+        if(game == null)
+            game = new Game(p);
+        return game;
+    }
+
+    public static void clear()
+    {
+        game = null;
     }
 
 

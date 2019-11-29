@@ -65,7 +65,7 @@ public class MainScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        uname.setText(Main.game.getPlayer().getName());
+        uname.setText(Game.getInstance().getPlayer().getName());
     }
     public void clickNewGame() throws Exception
     {

@@ -28,9 +28,13 @@ import java.util.Timer;
 public class Backyard implements Initializable {
     public static ArrayList<ZombieAppear> zombieApp;
     @FXML
-    ImageView peashooter;
+    ImageView peashooter, peashooterCard;
     @FXML
-    ImageView sunflower;
+    ImageView sunflower, sunflowerCard;
+    @FXML
+    ImageView cherryCard;
+    @FXML
+    ImageView walnut, walnutCard;
     @FXML
     Label Score,sunCount;
     @FXML
@@ -58,7 +62,9 @@ public class Backyard implements Initializable {
     private VBox cell[][];
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Level1 l = new Level1(10,2);
+        Level l = Game.getInstance().getLevel();
+
+        System.out.println("In Backyard at level: "+l.getLvlNo());
         zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();

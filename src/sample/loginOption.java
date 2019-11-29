@@ -25,7 +25,8 @@ public class loginOption {
             return;
         }
         System.out.print("Username: "+in);
-        Main.setGame(new Game(in));
+        Game.clear();
+        Game.getInstance(in);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         loadPane.getChildren().setAll(pane);
     }
