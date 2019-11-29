@@ -59,7 +59,7 @@
         <Image url="@resources/Buttons/exitScreenBox@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="crossBtn@3x.png" fitHeight="51.0" fitWidth="43.0" layoutX="686.0" layoutY="66.0" onMouseClicked="#clickOnNo">
+    <ImageView id="crossBtn@3x.png" fitHeight="51.0" fitWidth="43.0" layoutX="679.0" layoutY="102.0" onMouseClicked="#clickOnNo">
       <image>
         <Image url="@resources/Buttons/crossBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>

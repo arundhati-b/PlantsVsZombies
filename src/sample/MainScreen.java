@@ -70,7 +70,7 @@ public class MainScreen implements Initializable {
     public void clickNewGame() throws Exception
     {
 //        throw new Exception();
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChooseLevel.fxml"));
         rootPane1.getChildren().setAll(pane);
     }
     public void clickLoadGame() throws Exception
