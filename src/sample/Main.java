@@ -20,12 +20,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-//            Player p = Player.getInstance("Default_player");
-//            Game g = Game.getInstance(p);
-//            p.setGame(g);
-//            playersSerialize();
-//            serialize();
-//            System.exit(0);
+            Player p = Player.getInstance("Default_player");
+            Game g = Game.getInstance(p);
+            p.setGame(g);
+            playersSerialize();
+            serialize();
+            System.exit(0);
             playersDeserialize();
             stage = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
