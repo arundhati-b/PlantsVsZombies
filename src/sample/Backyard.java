@@ -204,7 +204,7 @@ public class Backyard implements Initializable {
                     p.setLayoutY(target.getLayoutY() + 5);
                     p.setFitHeight(20);
                     p.setFitWidth(20);
-                    Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY());
+                    Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY(), pickedPlant);
                     shotPea.add(temp);
                     time.schedule( temp , 0);
                     hello.getChildren().add(p);

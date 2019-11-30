@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -12,17 +13,21 @@ class Pea extends TimerTask {
     ImageView a;
     double x;
     double y;
+    ImageView parent;
     int attack = 5;
-    Pea(ImageView p, double x, double y){
+    Pea(ImageView p, double x, double y, ImageView parent){
 
         this.a = p;
         this.x = x + 10;
         this.y = y + 20;
+        this.parent = parent;
         a.setVisible(true);
 
     }
+    AnimationTimer t;
     public void  move() {
-        new AnimationTimer() {
+
+        t = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 a.setLayoutX(a.getLayoutX() + 10);
@@ -32,10 +37,19 @@ class Pea extends TimerTask {
                     a.setLayoutY(y);
                 }
                 collide(Backyard.zombieApp);
+                if(parent.isVisible() == false){
+                    kill();
+                }
             }
-        }.start();
-    }
+        };
 
+        t.start();
+
+    }
+    public void kill(){
+        t.stop();
+        a.setVisible(false);
+    }
 
     public void collide(ArrayList<ZombieAppear> zombieApp){
 
