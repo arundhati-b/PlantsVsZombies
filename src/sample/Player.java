@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class Player implements Serializable {
-    public static Map<String,Player> players = new HashMap<String,Player>();
+public final class Player implements Serializable,Comparable<Player> {
+    public transient static Map<String,Player> players = new HashMap<String,Player>();
     private String name;
     private Game game;
     private int score;
@@ -29,11 +29,25 @@ public final class Player implements Serializable {
             return true;
         return false;
     }
+    @Override
+    public int compareTo(Player p)
+    {
+        if(score > p.score)
+            return 1;
+        else if(score < p.score)
+            return -1;
+        return 0;
+    }
     public boolean doesPlayerExist(Player p)
     {
         if(players.containsKey(p))
             return true;
         return false;
+    }
+    @Override
+    public String toString()
+    {
+        return name+" "+score;
     }
     public String getName() {
         return name;

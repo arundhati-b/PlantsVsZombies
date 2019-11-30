@@ -14,8 +14,7 @@ public abstract class Level implements Serializable {
 
     static int[] pos = {90 ,200, 310, 420,500};
     ArrayList<Plant> currentPlants = new ArrayList<Plant>();
-    static public ArrayList<ZombieAppear> zombieApp;
-    Map<Cell,Plant> cells = new HashMap<Cell,Plant>();
+    public static ArrayList<ZombieAppear> zombieApp;
     int sunCount;
     int below;
     int top;

@@ -28,13 +28,15 @@ import java.util.Timer;
 public class Backyard implements Initializable {
     public static ArrayList<ZombieAppear> zombieApp;
     @FXML
-    ImageView peashooter, peashooterCard;
+    ImageView peashooter, c1;
     @FXML
-    ImageView sunflower, sunflowerCard;
+    ImageView sunflower, c2;
     @FXML
-    ImageView cherryCard;
+    ImageView c3;
     @FXML
-    ImageView walnut, walnutCard;
+    ImageView walnut, c4;
+    @FXML
+    ImageView c5;
     @FXML
     Label Score,sunCount;
     @FXML
@@ -70,8 +72,9 @@ public class Backyard implements Initializable {
         zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();
-        sources.add(peashooter);
-        sources.add(sunflower);
+//        sources.add(peashooter);
+//        sources.add(sunflower);
+        addSources(sources);
         ArrayList<Pea> shotPeas = new ArrayList<>();
 
         for(int i=0; i<9; i++)
@@ -86,6 +89,9 @@ public class Backyard implements Initializable {
                 }
             }
         }
+
+
+
         Random r = new Random();
         for(int i = 0; i < l.lvlNo; i++){
             if( i == 0 ){
@@ -113,15 +119,6 @@ public class Backyard implements Initializable {
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
-            }
-            else if (i == 2){
-
-            }
-            else if (i == 3){
-
-            }
-            else if (i == 4){
-
             }
 
 
@@ -271,6 +268,37 @@ public class Backyard implements Initializable {
         cell[8][4] = vx84;
     }
 
+    void addSources(ArrayList<ImageView> sources)
+    {
+        c1.setVisible(false);
+        c2.setVisible(false);
+        c3.setVisible(false);
+        c4.setVisible(false);
+        c5.setVisible(false);
 
+        peashooter.setVisible(false);
+        sunflower.setVisible(false);
+        walnut.setVisible(false);
+
+        for(int i=1; i<=Game.getInstance().getPlayer().getHighestLevel(); i++)
+        {
+            switch(i)
+            {
+                case 1: c1.setVisible(true); peashooter.setVisible(true);
+                    sources.add(peashooter);
+                    break;
+                case 2: c2.setVisible(true); sunflower.setVisible(true); sources.add(sunflower);
+                    break;
+                case 3: c3.setVisible(true);
+                    break;
+                case 4: c4.setVisible(true); sources.add(walnut);
+                    break;
+                case 5: c5.setVisible(true);
+                    break;
+            }
+        }
+
+
+    }
 
 }
