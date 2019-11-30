@@ -18,7 +18,6 @@ public class MainScreen implements Initializable {
     public ImageView newgameBtn;
     public ImageView loadgameBtn;
     public ImageView leaderboardBtn;
-    public ImageView chooseLevelBtn;
     public ImageView exitBtn;
     public AnchorPane rootPane1;
     public Label uname;
@@ -75,8 +74,12 @@ public class MainScreen implements Initializable {
     }
     public void clickLoadGame() throws Exception
     {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("emptySavedGamesMenu.fxml"));
+        Main.deserialize(Player.getInstance().getName());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
         rootPane1.getChildren().setAll(pane);
+
+//        AnchorPane pane = FXMLLoader.load(getClass().getResource("emptySavedGamesMenu.fxml"));
+//        rootPane1.getChildren().setAll(pane);
     }
     public void clickLeaderboard() throws Exception
     {

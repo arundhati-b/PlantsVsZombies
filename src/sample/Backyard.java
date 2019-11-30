@@ -30,9 +30,7 @@ import java.util.concurrent.ForkJoinPool;
 
 
 public class Backyard implements Initializable {
-    public  ArrayList<ZombieAppear> zombieApp;
-    public  ArrayList<Plant> PlantedPlants;
-    public ArrayList<LawnMower> lawnMowers;
+    public static ArrayList<ZombieAppear> zombieApp = new ArrayList<>();
     @FXML
     ImageView peashooter, c1;
     @FXML
@@ -42,7 +40,7 @@ public class Backyard implements Initializable {
     @FXML
     ImageView walnut, c4;
     @FXML
-    ImageView c5;
+    ImageView shovel;
     @FXML
     Label Score,sunCount;
     @FXML
@@ -68,6 +66,14 @@ public class Backyard implements Initializable {
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
 
     private VBox cell[][];
+
+    @FXML
+    void clickOptions(ActionEvent event) throws Exception {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
+        hello.getChildren().setAll(pane);
+        event.consume();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -79,12 +85,12 @@ public class Backyard implements Initializable {
         lawnMowers.add(new LawnMower(lm5));
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
-        zombieApp = new ArrayList<>();
+//        zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();
         addSources(sources);
         ArrayList<Pea> shotPeas = new ArrayList<>();
-        PlantedPlants = new ArrayList<>();
+//         PlantedPlants = new ArrayList<>();
 
         for(int i=0; i<9; i++)
         {
@@ -94,7 +100,7 @@ public class Backyard implements Initializable {
                 for (int k=0; k<sources.size(); k++)
                 {
                     final ImageView source = sources.get(k);
-                    addFunctionalities(source,target, shotPeas, PlantedPlants);
+                    addFunctionalities(source,target, shotPeas, Game.getInstance().getLevel().PlantedPlants);
                 }
             }
         }
@@ -102,13 +108,14 @@ public class Backyard implements Initializable {
 
 
         Random r = new Random();
-        for(int i = 1; i < l.lvlNo; i++){
+        for(int i = 0; i < l.getLvlNo(); i++){
             if( i == 0 ){
                 Zombie t1 = new ZombieNormal();
-                int ran1 = r.nextInt(l.top) + l.below;
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+//                System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
-                    temp.a.setLayoutX(1500);
+                    temp.a.setLayoutX(1200);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
@@ -116,7 +123,7 @@ public class Backyard implements Initializable {
             }
             else if (i == 1){
                 Zombie t1 = new ZombieCone();
-                int ran1 = r.nextInt(l.top) + l.below;
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
                 System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
@@ -136,7 +143,7 @@ public class Backyard implements Initializable {
         int c = 0;
         for(ZombieAppear z : zombieApp){
 //            System.out.println("Here");
-            c += r.nextInt(5000) + 1000;
+            c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
 //            c += 100;
             if(c > 50000000){
                 c = 0;
@@ -227,13 +234,6 @@ public class Backyard implements Initializable {
         });
     }
 
-    @FXML
-    void clickOptions(ActionEvent event) throws Exception {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
-        hello.getChildren().setAll(pane);
-        event.consume();
-    }
-
     void intializecells() {
         cell = new VBox[9][5];
         cell[0][0] = vx00;
@@ -289,14 +289,14 @@ public class Backyard implements Initializable {
         c2.setVisible(false);
         c3.setVisible(false);
         c4.setVisible(false);
-        c5.setVisible(false);
+        shovel.setVisible(false);
 
         peashooter.setVisible(false);
         sunflower.setVisible(false);
         cherrybomb.setVisible(false);
         walnut.setVisible(false);
 
-        for(int i=1; i<=Game.getInstance().getPlayer().getHighestLevel(); i++)
+        for(int i=1; i<=Game.getInstance().getLevel().getLvlNo(); i++)
         {
             switch(i)
             {
@@ -309,7 +309,7 @@ public class Backyard implements Initializable {
                     break;
                 case 4: c4.setVisible(true); walnut.setVisible(true); sources.add(walnut);
                     break;
-                case 5: c5.setVisible(true);
+                case 5: shovel.setVisible(true);
                     break;
             }
         }

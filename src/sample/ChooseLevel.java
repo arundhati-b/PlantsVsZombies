@@ -49,29 +49,31 @@ public class ChooseLevel implements Initializable {
         b1.setOnMouseClicked(e -> {
             Game.getInstance().setLevel(new Level1(7,10));
             callBackyard();
+//            Game.getInstance().playGame();
         });
 
         b2.setOnMouseClicked(e -> {
             Game.getInstance().setLevel(new Level2(8,15));
             callBackyard();
+//            Game.getInstance().playGame();
         });
 
         b3.setOnMouseClicked(e -> {
             Game.getInstance().setLevel(new Level3(9,18));
             callBackyard();
-
+//            Game.getInstance().playGame();
         });
 
         b4.setOnMouseClicked(e -> {
             Game.getInstance().setLevel(new Level4(10,22));
             callBackyard();
-
+//            Game.getInstance().playGame();
         });
 
         b5.setOnMouseClicked(e -> {
             Game.getInstance().setLevel(new Level5(11,25));
             callBackyard();
-
+//            Game.getInstance().playGame();
         });
 
 
@@ -82,7 +84,7 @@ public class ChooseLevel implements Initializable {
     {
         try
         {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
+            AnchorPane pane = FXMLLoader.load((ChooseLevel.class).getResource("backyard.fxml"));
             rootPane1.getChildren().setAll(pane);
         }
         catch(IOException e)

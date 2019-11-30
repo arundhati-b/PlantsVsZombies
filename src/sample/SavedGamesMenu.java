@@ -11,6 +11,7 @@ public class SavedGamesMenu {
 
     public void clickOnOk() throws Exception
     {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         rootPane3.getChildren().setAll(pane);
     }

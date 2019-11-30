@@ -31,7 +31,8 @@ public class ZombieAppear extends TimerTask {
                 }
 
                 if(k > 100){
-                    plantAttacK(Backyard.PlantedPlants, za);
+//                    System.out.println("HERERRERERERERE");
+                    plantAttacK(Game.getInstance().getLevel().PlantedPlants, za);
                     k = 0;
                 }
 

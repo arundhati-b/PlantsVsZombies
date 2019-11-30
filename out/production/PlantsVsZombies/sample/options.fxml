@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -118,15 +117,15 @@
         <Font name="Bukhari Script" size="40.0" fx:id="x2" />
       </font>
     </Label>
-    <Label font="$x2" layoutX="469.0" layoutY="315.0" prefWidth="206.0" text="Save Game" textFill="WHITE" />
-    <Label font="$x2" layoutX="456.0" layoutY="414.0" text="Back to Game" textFill="WHITE" />
-    <Label layoutX="427.0" layoutY="201.0" prefHeight="56.597412109375" prefWidth="316.0" text="Back to Main Menu" textFill="WHITE">
+    <Label layoutX="423.0" layoutY="319.0" prefWidth="316.0" text="Save Game and exit" textFill="WHITE">
       <font>
-        <Font name="Bukhari Script" size="33.0" />
+        <Font name="Bukhari Script" size="33.0" fx:id="x3" />
       </font>
     </Label>
+    <Label font="$x2" layoutX="456.0" layoutY="414.0" text="Back to Game" textFill="WHITE" />
+    <Label font="$x3" layoutX="427.0" layoutY="201.0" prefHeight="56.597412109375" prefWidth="316.0" text="Back to Main Menu" textFill="WHITE" />
     <Button fx:id="quit" layoutX="430.0" layoutY="201.0" mnemonicParsing="false" onAction="#clickExit" opacity="0.0" prefHeight="57.0" prefWidth="293.0" text="Back to Main Menu" />
-    <Button fx:id="saveGame" layoutX="430.0" layoutY="315.0" mnemonicParsing="false" onAction="#openSaveGameMenu" opacity="0.0" prefHeight="52.0" prefWidth="293.0" text="Save Game" />
+    <Button fx:id="saveGame" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="410.0" layoutY="315.0" mnemonicParsing="false" onAction="#openSaveGameMenu" opacity="0.0" prefHeight="52.0" prefWidth="329.0" text="Save Game and exit" textAlignment="CENTER" />
     <Button fx:id="back" layoutX="410.0" layoutY="404.0" mnemonicParsing="false" onAction="#backToGame" opacity="0.0" prefHeight="62.0" prefWidth="319.0" text="Back to Game" />
   </children>
 </AnchorPane>

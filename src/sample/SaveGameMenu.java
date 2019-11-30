@@ -15,6 +15,14 @@ public class SaveGameMenu {
     AnchorPane goBackPane;
 
     @FXML
+    void tick() throws IOException
+    {
+        Main.serialize();
+        Main.playersSerialize();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        goBackPane.getChildren().setAll(pane);
+    }
+    @FXML
     void goback() throws IOException
     {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
