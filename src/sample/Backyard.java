@@ -37,7 +37,7 @@ public class Backyard implements Initializable {
     @FXML
     ImageView sunflower, c2;
     @FXML
-    ImageView c3;
+    ImageView cherrybomb, c3;
     @FXML
     ImageView walnut, c4;
     @FXML
@@ -281,6 +281,7 @@ public class Backyard implements Initializable {
 
         peashooter.setVisible(false);
         sunflower.setVisible(false);
+        cherrybomb.setVisible(false);
         walnut.setVisible(false);
 
         for(int i=1; i<=Game.getInstance().getPlayer().getHighestLevel(); i++)
@@ -292,9 +293,9 @@ public class Backyard implements Initializable {
                     break;
                 case 2: c2.setVisible(true); sunflower.setVisible(true); sources.add(sunflower);
                     break;
-                case 3: c3.setVisible(true);
+                case 3: c3.setVisible(true); cherrybomb.setVisible(true); sources.add(cherrybomb);
                     break;
-                case 4: c4.setVisible(true); sources.add(walnut);
+                case 4: c4.setVisible(true); walnut.setVisible(true); sources.add(walnut);
                     break;
                 case 5: c5.setVisible(true);
                     break;
