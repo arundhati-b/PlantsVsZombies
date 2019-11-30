@@ -30,8 +30,9 @@ import java.util.concurrent.ForkJoinPool;
 
 
 public class Backyard implements Initializable {
-    public static ArrayList<ZombieAppear> zombieApp;
-    public static ArrayList<Plant> PlantedPlants;
+    public  ArrayList<ZombieAppear> zombieApp;
+    public  ArrayList<Plant> PlantedPlants;
+    public ArrayList<LawnMower> lawnMowers;
     @FXML
     ImageView peashooter, c1;
     @FXML
@@ -59,7 +60,7 @@ public class Backyard implements Initializable {
     @FXML
     ProgressBar pb;
     @FXML
-    ImageView lm3;
+    ImageView lm1, lm2, lm3, lm4, lm5;
     @FXML
     Button optionsBtn;
 
@@ -69,9 +70,13 @@ public class Backyard implements Initializable {
     private VBox cell[][];
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ExecutorService exec = Executors.newFixedThreadPool(1);
-        Level l = Game.getInstance().getLevel();
 
+        Level l = Game.getInstance().getLevel();
+        lawnMowers.add(new LawnMower(lm1));
+        lawnMowers.add(new LawnMower(lm2));
+        lawnMowers.add(new LawnMower(lm3));
+        lawnMowers.add(new LawnMower(lm4));
+        lawnMowers.add(new LawnMower(lm5));
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
         zombieApp = new ArrayList<>();
@@ -101,12 +106,10 @@ public class Backyard implements Initializable {
             if( i == 0 ){
                 Zombie t1 = new ZombieNormal();
                 int ran1 = r.nextInt(l.top) + l.below;
-//                System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-//                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
@@ -133,7 +136,7 @@ public class Backyard implements Initializable {
         int c = 0;
         for(ZombieAppear z : zombieApp){
 //            System.out.println("Here");
-            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+            c += r.nextInt(5000) + 1000;
 //            c += 100;
             if(c > 50000000){
                 c = 0;
@@ -203,7 +206,6 @@ public class Backyard implements Initializable {
                     Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY(), pickedPlant);
                     pickedPlant.setLayoutX(target.getLayoutX());
                     pickedPlant.setLayoutY(target.getLayoutY());
-                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     shotPea.add(temp);
                     time.schedule( temp , 0);
                     PlantedPlants.add(new PeaShooter(pickedPlant));
@@ -212,8 +214,13 @@ public class Backyard implements Initializable {
                 if(pickedPlant.getImage() == sunflower.getImage()){
                     pickedPlant.setLayoutX(target.getLayoutX());
                     pickedPlant.setLayoutY(target.getLayoutY());
-                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     PlantedPlants.add(new Sunflower(pickedPlant));
+                }
+
+                if(pickedPlant.getImage()  == walnut.getImage()){
+                    pickedPlant.setLayoutX(target.getLayoutX());
+                    pickedPlant.setLayoutY(target.getLayoutY());
+                    PlantedPlants.add(new Walnut(pickedPlant));
                 }
             }
             e.consume();

@@ -1,6 +1,7 @@
 package sample;
 
 
+import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 
 public abstract class Plant {
