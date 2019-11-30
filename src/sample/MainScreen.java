@@ -45,14 +45,6 @@ public class MainScreen implements Initializable {
     {
         leaderboardBtn.setRotate(0);
     }
-    public void p4()
-    {
-        chooseLevelBtn.setRotate(5);
-    }
-    public void r4()
-    {
-        chooseLevelBtn.setRotate(0);
-    }
     public void p5()
     {
         exitBtn.setRotate(5);
