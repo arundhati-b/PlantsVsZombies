@@ -13,7 +13,7 @@ public class ProgBar extends TimerTask {
     volatile double count = 0;
     @Override
     public void run() {
-        count += 0.2;
+        count += 0.005;
         pb.setProgress(count);
     }
 }

@@ -9,7 +9,7 @@ public class LawnMower extends Plant {
     ImageView lm;
 
     LawnMower(int x, int y, ImageView lm){
-        super(x , y , lm ,10_000);
+        super(x , y , lm ,100,100);
         this.lm = lm;
     }
 }

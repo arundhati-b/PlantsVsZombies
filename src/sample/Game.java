@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Integer.max;
+
 public class Game implements Serializable {
     private Player player;
     private Level level;
@@ -77,14 +79,19 @@ public class Game implements Serializable {
         switch (level.getLvlNo())
         {
             case 1: level = new Level2(8,15);
+                Player.getInstance().setHighestLevel(max(Player.getInstance().getHighestLevel(),level.getLvlNo()));
             break;
             case 2: level = new Level3(9,18);
+                Player.getInstance().setHighestLevel(max(Player.getInstance().getHighestLevel(),level.getLvlNo()));
             break;
             case 3: level = new Level4(10,22);
+                Player.getInstance().setHighestLevel(max(Player.getInstance().getHighestLevel(),level.getLvlNo()));
             break;
             case 4: level = new Level5(11,25);
+                Player.getInstance().setHighestLevel(max(Player.getInstance().getHighestLevel(),level.getLvlNo()));
             break;
             case 5: throw new GameWinException();
+
         }
     }
 

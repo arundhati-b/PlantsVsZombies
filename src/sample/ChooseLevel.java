@@ -83,31 +83,26 @@ public class ChooseLevel implements Initializable {
 
     public void callBackyard()
     {
-//        Game.getInstance().playGame();
-//        Task<Integer> task = new Task<Integer>() {
-//            @Override
-//            protected Integer call() throws Exception {
-//                while (true) {
-//                    try {
-//                        Thread.sleep(5000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    int x = Game.getInstance().playGame();
-//                    if(x == 0)
-//
-//
-//                    return x;
-//                }
-//            }
-//        };
-//        Thread t1 = new Thread(task);
-//        t1.start();
-//        t1.setDaemon(true);
+        String s = "backyard.fxml";
 
+        switch(Game.getInstance().getLevel().getLvlNo())
+        {
+            case 2:
+                s = "backyard1.fxml";
+                break;
+            case 3:
+                s = "backyard2.fxml";
+                break;
+            case 4:
+                s = "backyard3.fxml";
+                break;
+            case 5:
+                s = "backyard4.fxml";
+                break;
+        }
         try
         {
-            AnchorPane pane = FXMLLoader.load((ChooseLevel.class).getResource("backyard.fxml"));
+            AnchorPane pane = FXMLLoader.load((ChooseLevel.class).getResource(s));
             rootPane1.getChildren().setAll(pane);
         }
         catch(IOException e)

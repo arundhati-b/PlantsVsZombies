@@ -87,6 +87,11 @@ public final class Player implements Serializable,Comparable<Player> {
         return highestLevel;
     }
 
+    public void setHighestLevel(int l)
+    {
+        highestLevel = l;
+    }
+
     public void print()
     {
 //        System.out.println("Total players registered: "+players.size());

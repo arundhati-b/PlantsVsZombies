@@ -34,7 +34,24 @@ public class NextLevelScreen {
             }
         }
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
+        String s = "backyard.fxml";
+
+        switch(Game.getInstance().getLevel().getLvlNo())
+        {
+            case 2:
+                s = "backyard1.fxml";
+                break;
+            case 3:
+                s = "backyard2.fxml";
+                break;
+            case 4:
+                s = "backyard3.fxml";
+                break;
+            case 5:
+                s = "backyard4.fxml";
+                break;
+        }
+        AnchorPane pane = FXMLLoader.load(getClass().getResource(s));
         optionPane.getChildren().setAll(pane);
     }
 
