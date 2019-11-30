@@ -148,7 +148,7 @@
     </ProgressBar>
     <ImageView id="title.png" fitHeight="234.66668701171875" fitWidth="497.6666564941406" layoutX="331.0" layoutY="-87.0" scaleX="0.3" scaleY="0.3">
       <effect>
-        <DropShadow radius="126.771484375" width="255.0" />
+        <DropShadow radius="126.8857421875" width="255.0" />
       </effect>
       <image>
         <Image preserveRatio="true" smooth="true" url="@resources/title.png" />
