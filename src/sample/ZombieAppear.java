@@ -1,13 +1,12 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
-import javafx.fxml.FXML;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
-import java.util.Random;
+
 import java.util.TimerTask;
 
 public class ZombieAppear extends TimerTask {
@@ -22,13 +21,16 @@ public class ZombieAppear extends TimerTask {
             @Override
             public void handle(long now) {
                 a.setLayoutX(a.getLayoutX() - speed);
+                if(a.getLayoutX() < 200){
+                    za.speed = 0;
+                }
                 k++;
                 if(a.getImage() != reference.getImage() && health <= 30){
                     a.setImage(new Image("sample/resources/Zombie_Normal.gif"));
                 }
 
                 if(k > 100){
-                    System.out.println("HERERRERERERERE");
+//                    System.out.println("HERERRERERERERE");
                     plantAttacK(Backyard.PlantedPlants, za);
                     k = 0;
                 }
@@ -64,8 +66,6 @@ public class ZombieAppear extends TimerTask {
 
     void plantAttacK(ArrayList<Plant> plantPlanted, ZombieAppear za){
         for (Plant p : plantPlanted){
-            System.out.println(p.image.getLayoutX() + " sfbniuawebgionreg " + p.image.getLayoutY());
-            System.out.println(p.posx + " Vaibhav " + p.posy);
             if(p.image.isVisible()){
                 p.image.setLayoutX(p.posx);
                 p.image.setLayoutY(p.posy);
@@ -75,6 +75,7 @@ public class ZombieAppear extends TimerTask {
                 System.out.println("Here");
                 p.health = p.health - za.attack;
                 if(p.health <= 0){
+
                     p.image.setVisible(false);
                     p.image.setLayoutX(-100);
                     p.image.setLayoutY(-100);

@@ -133,8 +133,8 @@ public class Backyard implements Initializable {
         int c = 0;
         for(ZombieAppear z : zombieApp){
 //            System.out.println("Here");
-//            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
-            c += 100;
+            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+//            c += 100;
             if(c > 50000000){
                 c = 0;
             }
