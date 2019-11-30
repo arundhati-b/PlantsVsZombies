@@ -13,8 +13,10 @@ import java.util.InputMismatchException;
 public class Main extends Application {
 
 //    public Game g;
-    static boolean loadedSession = false;
+    static volatile boolean loadedSession = false;
+    static volatile boolean loaded = false;
 
+    static Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -25,6 +27,7 @@ public class Main extends Application {
 //            serialize();
 //            System.exit(0);
             playersDeserialize();
+            stage = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
             primaryStage.setTitle("Plants Vs Zombies");
             primaryStage.setScene(new Scene(root, 1108, 636));
@@ -32,6 +35,12 @@ public class Main extends Application {
             primaryStage.getIcons().add(new Image("sample/resources/title.png"));
             primaryStage.show();
 
+
+//            while(!loaded)
+//            {
+//
+//            }
+//
 //            System.out.println("Hello");
 //        Game.getInstance().playGame();
 

@@ -34,7 +34,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 
 
-public class Backyard implements Initializable {
+public class Backyard1 implements Initializable {
     public static ArrayList<ZombieAppear> zombieApp = new ArrayList<>();
     @FXML
     AnchorPane hello;
@@ -67,12 +67,11 @@ public class Backyard implements Initializable {
     @FXML
     Button optionsBtn, lolBtn;
 
-
     @FXML
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
 
     private VBox cell[][];
-    public static ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
+    ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
 
     @FXML
     void clickOptions(ActionEvent event) throws Exception {
@@ -85,18 +84,11 @@ public class Backyard implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Level l = Game.getInstance().getLevel();
-        LawnMower lmwr1 = new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1);
-        LawnMower lmwr2 = new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2);
-        LawnMower lmwr3 = new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3);
-        LawnMower lmwr4 = new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4);
-        LawnMower lmwr5 = new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5);
-
-        lawnMowers.add(lmwr1);
-        lawnMowers.add(lmwr2);
-        lawnMowers.add(lmwr3);
-        lawnMowers.add(lmwr4);
-        lawnMowers.add(lmwr5);
-        System.out.println(lm1.getLayoutX() + "  " + lm2.getLayoutY());
+        lawnMowers.add(new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1));
+        lawnMowers.add(new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2));
+        lawnMowers.add(new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3));
+        lawnMowers.add(new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4));
+        lawnMowers.add(new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5));
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
 //        zombieApp = new ArrayList<>();
@@ -161,13 +153,8 @@ public class Backyard implements Initializable {
             time.schedule(z, c);
         }
 
-        time.schedule(sunView1, 200);
+        time.schedule(sunView1, 8000);
         time.schedule(progressbar, 1000, 1000);
-        time.schedule(lmwr1, 0,100);
-        time.schedule(lmwr2, 0,100);
-        time.schedule(lmwr3, 0,100);
-        time.schedule(lmwr4, 0,100);
-        time.schedule(lmwr5, 0,100);
 
         System.out.println("Initialization done");
 
@@ -181,7 +168,7 @@ public class Backyard implements Initializable {
                         e.printStackTrace();
                     }
                     while (true) {
-                        if (progressbar.count >= 1) {
+                        if (progressbar.count == 1) {
                             break;
                         }
                     }
@@ -202,9 +189,9 @@ public class Backyard implements Initializable {
                             System.out.println("level changed");
                         }
                     });
-                        return null;
-                    }
+                    return null;
                 }
+            }
         };
         Thread t = new Thread(task);
         t.start();
@@ -253,76 +240,17 @@ public class Backyard implements Initializable {
                     pickedPlant.setImage(((ImageView)s).getImage());
                 else
                     pickedPlant.setImage(db.getImage());
-
-
-                if(pickedPlant.getImage() == shovel.getImage())
-                {
-                    if(target.getChildren().size() == 0)
-                        return;
-                    Node x = target.getChildren().get(0);
-                    x.setVisible(false);
-                    target.getChildren().clear();
-                    return;
-                }
-
                 pickedPlant.setPreserveRatio(true);
-//                pickedPlant.fitWidthProperty().bind(target.widthProperty());
-//                pickedPlant.fitHeightProperty().bind(target.heightProperty());
-                pickedPlant.setFitWidth(60);
+                pickedPlant.fitWidthProperty().bind(target.widthProperty());
+                pickedPlant.fitHeightProperty().bind(target.heightProperty());
                 if(target.getChildren().size() == 0)
                 {
-                    if(pickedPlant.getImage() == peashooter.getImage()) {
-                        if(Integer.parseInt(sunCount.getText()) < 100)
-                            return;
-                        int x = Integer.parseInt(sunCount.getText());
-                        sunCount.setText(Integer.toString(x-100));
-                    }
-                    if(pickedPlant.getImage() == sunflower.getImage()) {
-                        if(Integer.parseInt(sunCount.getText()) < 50)
-                            return;
-                        int x = Integer.parseInt(sunCount.getText());
-                        sunCount.setText(Integer.toString(x-50));
-                    }
-                    if(pickedPlant.getImage() == cherrybomb.getImage()) {
-                        if(Integer.parseInt(sunCount.getText()) < 150)
-                            return;
-                        int x = Integer.parseInt(sunCount.getText());
-                        sunCount.setText(Integer.toString(x-150));
-                    }
-                    if(pickedPlant.getImage() == walnut.getImage()) {
-                        if(Integer.parseInt(sunCount.getText()) < 50)
-                            return;
-                        int x = Integer.parseInt(sunCount.getText());
-                        sunCount.setText(Integer.toString(x-50));
-                    }
                     target.getChildren().add(pickedPlant);
                     if(pickedPlant.getImage() == peashooter.getImage()) {
-                        peashooter.setVisible(false);
-                        c1.setOpacity(0.5);
-                        c1.setDisable(true);
-                        new Thread(new Runnable() {
-                            @Override public void run() {
-                                try
-                                {
-                                    Thread.sleep(5000);
-                                }
-                                catch(InterruptedException e)
-                                {
-
-                                }
-                                    Platform.runLater(new Runnable() {
-                                        @Override public void run() {
-                                            peashooter.setVisible(true);
-                                            c1.setOpacity(1);
-                                            c1.setDisable(false);
-                                        }
-                                    });
-                                }
-                            }).start();
                         ImageView p = new ImageView("sample/resources/pea.png");
                         p.setVisible(true);
                         p.setLayoutX(target.getLayoutX() + 10);
-                        p.setLayoutY(target.getLayoutY()+5);
+                        p.setLayoutY(target.getLayoutY() + 5);
                         p.setFitHeight(20);
                         p.setFitWidth(20);
 
@@ -335,28 +263,6 @@ public class Backyard implements Initializable {
                         hello.getChildren().add(p);
                     }
                     if(pickedPlant.getImage() == sunflower.getImage()){
-                        sunflower.setVisible(false);
-                        c2.setOpacity(0.5);
-                        c2.setDisable(true);
-                        new Thread(new Runnable() {
-                            @Override public void run() {
-                                try
-                                {
-                                    Thread.sleep(5000);
-                                }
-                                catch(InterruptedException e)
-                                {
-
-                                }
-                                Platform.runLater(new Runnable() {
-                                    @Override public void run() {
-                                        sunflower.setVisible(true);
-                                        c2.setOpacity(1);
-                                        c2.setDisable(false);
-                                    }
-                                });
-                            }
-                        }).start();
                         ImageView p = new ImageView("sample/resources/sun.png");
                         p.setVisible(true);
                         p.setLayoutX(target.getLayoutX());
@@ -375,55 +281,7 @@ public class Backyard implements Initializable {
                         PlantedPlants.add(new Sunflower(pickedPlant));
                     }
 
-                    if(pickedPlant.getImage() == cherrybomb.getImage())
-                    {
-                        cherrybomb.setVisible(false);
-                        c3.setOpacity(0.5);
-                        c3.setDisable(true);
-                        new Thread(new Runnable() {
-                            @Override public void run() {
-                                try
-                                {
-                                    Thread.sleep(5000);
-                                }
-                                catch(InterruptedException e)
-                                {
-
-                                }
-                                Platform.runLater(new Runnable() {
-                                    @Override public void run() {
-                                        cherrybomb.setVisible(true);
-                                        c3.setOpacity(1);
-                                        c3.setDisable(false);
-                                    }
-                                });
-                            }
-                        }).start();
-                    }
-
                     if(pickedPlant.getImage()  == walnut.getImage()){
-                        walnut.setVisible(false);
-                        c4.setOpacity(0.5);
-                        c4.setDisable(true);
-                        new Thread(new Runnable() {
-                            @Override public void run() {
-                                try
-                                {
-                                    Thread.sleep(5000);
-                                }
-                                catch(InterruptedException e)
-                                {
-
-                                }
-                                Platform.runLater(new Runnable() {
-                                    @Override public void run() {
-                                        walnut.setVisible(true);
-                                        c4.setOpacity(1);
-                                        c4.setDisable(false);
-                                    }
-                                });
-                            }
-                        }).start();
                         pickedPlant.setLayoutX(target.getLayoutX());
                         pickedPlant.setLayoutY(target.getLayoutY());
                         PlantedPlants.add(new Walnut(pickedPlant));
@@ -522,7 +380,7 @@ public class Backyard implements Initializable {
                     break;
                 case 4: c4.setVisible(true); walnut.setVisible(true); sources.add(walnut);
                     break;
-                case 5: shovel.setVisible(true); sources.add(shovel);
+                case 5: shovel.setVisible(true);
                     break;
             }
         }

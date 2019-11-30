@@ -10,12 +10,10 @@ public class ProgBar extends TimerTask {
     ProgBar(ProgressBar pb){
         this.pb = pb;
     }
-    double count = 0;
+    volatile double count = 0;
     @Override
     public void run() {
-        count += 0.1;
+        count += 0.005;
         pb.setProgress(count);
-        if(count == 1)
-            Game.getInstance().getLevel().levelCompleted= true;
     }
 }

@@ -148,7 +148,7 @@
     </ProgressBar>
     <ImageView id="title.png" fitHeight="234.66668701171875" fitWidth="497.6666564941406" layoutX="331.0" layoutY="-87.0" scaleX="0.3" scaleY="0.3">
       <effect>
-        <DropShadow radius="126.94287109375" width="255.0" />
+        <DropShadow radius="126.9857177734375" width="255.0" />
       </effect>
       <image>
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
@@ -224,5 +224,6 @@
         <Image url="@resources/shovel.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
+    <Button fx:id="lolBtn" layoutX="1126.0" layoutY="17.0" mnemonicParsing="false" onAction="#changeLevel" opacity="0.0" text="Button" />
   </children>
 </AnchorPane>
