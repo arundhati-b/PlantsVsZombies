@@ -31,7 +31,10 @@ public class Main extends Application {
             primaryStage.setResizable(false);
             primaryStage.getIcons().add(new Image("sample/resources/title.png"));
             primaryStage.show();
-//            playersSerialize();
+
+//            System.out.println("Hello");
+//        Game.getInstance().playGame();
+
     }
 
     public static void main(String[] args) {

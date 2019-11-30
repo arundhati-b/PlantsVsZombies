@@ -13,7 +13,9 @@ public class ProgBar extends TimerTask {
     double count = 0;
     @Override
     public void run() {
-        count += 0.01;
+        count += 0.1;
         pb.setProgress(count);
+        if(count == 1)
+            Game.getInstance().getLevel().levelCompleted= true;
     }
 }

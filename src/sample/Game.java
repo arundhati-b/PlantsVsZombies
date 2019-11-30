@@ -52,8 +52,9 @@ public class Game implements Serializable {
     }
 
 
-    public void playGame()
+    public int playGame()
     {
+
         while (true)
         {
             try
@@ -63,11 +64,11 @@ public class Game implements Serializable {
             }
             catch(GameLostException e)
             {
-
+                return -1;
             }
             catch(GameWinException e)
             {
-
+                return 0;
             }
         }
     }
