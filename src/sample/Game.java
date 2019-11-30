@@ -12,7 +12,7 @@ public class Game implements Serializable {
     private Game(Player p)
     {
         player = p;
-//        level = new Level1();
+        level = new Level1(2,8);
     }
 
     public Level getLevel()

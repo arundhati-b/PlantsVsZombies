@@ -18,7 +18,6 @@ public class MainScreen implements Initializable {
     public ImageView newgameBtn;
     public ImageView loadgameBtn;
     public ImageView leaderboardBtn;
-    public ImageView chooseLevelBtn;
     public ImageView exitBtn;
     public AnchorPane rootPane1;
     public Label uname;

@@ -19,7 +19,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 //            Player p = Player.getInstance("Default_player");
+//            Game g = Game.getInstance(p);
+//            p.setGame(g);
 //            playersSerialize();
+//            serialize();
 //            System.exit(0);
             playersDeserialize();
             Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
@@ -43,7 +46,7 @@ public class Main extends Application {
         ObjectOutputStream outstream = null;
         try {
             String fileName = g.getPlayer().getName();
-            outstream = new ObjectOutputStream( new FileOutputStream(fileName+".txt"));
+            outstream = new ObjectOutputStream( new FileOutputStream("Database/"+fileName+".txt"));
             outstream.writeObject(g);
         }
 
@@ -61,7 +64,7 @@ public class Main extends Application {
         ObjectInputStream instream = null;
         try
         {
-            instream = new ObjectInputStream(new FileInputStream(fileName+".txt"));
+            instream = new ObjectInputStream(new FileInputStream("Database/"+fileName+".txt"));
 
             Game g = (Game) instream.readObject();
             Game.setClear();
@@ -82,7 +85,7 @@ public class Main extends Application {
         ObjectOutputStream outstream = null;
         playerList list = playerList.getInstance();
         try {
-            outstream = new ObjectOutputStream( new FileOutputStream("PlayerList.txt"));
+            outstream = new ObjectOutputStream( new FileOutputStream("Database/PlayerList.txt"));
             outstream.writeObject(list);
         }
 
@@ -99,7 +102,7 @@ public class Main extends Application {
         ObjectInputStream instream = null;
         try
         {
-            instream = new ObjectInputStream(new FileInputStream("PlayerList.txt"));
+            instream = new ObjectInputStream(new FileInputStream("Database/PlayerList.txt"));
 
             playerList p = (playerList) instream.readObject();
             if(p != null)
