@@ -97,16 +97,16 @@ public class Backyard implements Initializable {
 
 
         Random r = new Random();
-        for(int i = 0; i < l.lvlNo; i++){
+        for(int i = 1; i < l.lvlNo; i++){
             if( i == 0 ){
                 Zombie t1 = new ZombieNormal();
                 int ran1 = r.nextInt(l.top) + l.below;
-                System.out.println("ran1 "+ran1);
+//                System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+//                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
@@ -119,7 +119,7 @@ public class Backyard implements Initializable {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
+//                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
@@ -132,8 +132,9 @@ public class Backyard implements Initializable {
         Timer time = new Timer();
         int c = 0;
         for(ZombieAppear z : zombieApp){
-            System.out.println("Here");
-            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+//            System.out.println("Here");
+//            c += r.nextInt(5000) + (6000 - l.lvlNo*1000);
+            c += 100;
             if(c > 50000000){
                 c = 0;
             }
@@ -169,16 +170,13 @@ public class Backyard implements Initializable {
         });
 
         target.setOnDragExited(e -> {
-//            System.out.println("Drag exited");
 
             target.setBackground(Background.EMPTY);
-//            target.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
             e.consume();
         });
 
         target.setOnDragDropped(e -> {
-//            System.out.println("Drag dropped");
             e.acceptTransferModes(TransferMode.ANY);
 
             Dragboard db = e.getDragboard();
@@ -201,13 +199,20 @@ public class Backyard implements Initializable {
                     p.setLayoutY(target.getLayoutY() + 5);
                     p.setFitHeight(20);
                     p.setFitWidth(20);
+
                     Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY(), pickedPlant);
+                    pickedPlant.setLayoutX(target.getLayoutX());
+                    pickedPlant.setLayoutY(target.getLayoutY());
+                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     shotPea.add(temp);
                     time.schedule( temp , 0);
                     PlantedPlants.add(new PeaShooter(pickedPlant));
                     hello.getChildren().add(p);
                 }
                 if(pickedPlant.getImage() == sunflower.getImage()){
+                    pickedPlant.setLayoutX(target.getLayoutX());
+                    pickedPlant.setLayoutY(target.getLayoutY());
+                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     PlantedPlants.add(new Sunflower(pickedPlant));
                 }
             }

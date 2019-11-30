@@ -57,13 +57,13 @@ class Pea extends TimerTask {
 
                 ZombieAppear zombieAppear = zombieApp.get(i);
 
-                System.out.println(a.getLayoutX() + "     " + a.getLayoutY() + "   ashjbf uisf ");
-                System.out.println(zombieAppear.a.getLayoutX() + "         " + zombieAppear.a.getLayoutY());
+//                System.out.println(a.getLayoutX() + "     " + a.getLayoutY() + "   ashjbf uisf ");
+//                System.out.println(zombieAppear.a.getLayoutX() + "         " + zombieAppear.a.getLayoutY());
 
                 if(this.a.isVisible() && zombieAppear.health > 0 && Math.abs(this.a.getLayoutX() - zombieAppear.a.getLayoutX()) <= 30 && Math.abs(this.a.getLayoutY() - zombieAppear.a.getLayoutY()) <= 100 && this.a.getLayoutX() != 0 && zombieAppear.a.isVisible()){
-                    System.out.println(a.getLayoutX() + "     " + a.getLayoutY() + "   ashjbf uisf ");
-                    System.out.println(zombieAppear.a.getLayoutX() + "         " + zombieAppear.a.getLayoutY());
-                    System.out.println(zombieAppear.health + " Left");
+//                    System.out.println(a.getLayoutX() + "     " + a.getLayoutY() + "   ashjbf uisf ");
+//                    System.out.println(zombieAppear.a.getLayoutX() + "         " + zombieAppear.a.getLayoutY());
+//                    System.out.println(zombieAppear.health + " Left");
                     zombieAppear.health -= this.attack;
                     this.a.setVisible(false);
                     if(zombieAppear.health <= 0){
