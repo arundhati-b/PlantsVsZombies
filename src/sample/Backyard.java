@@ -20,13 +20,18 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 import java.util.Timer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 
 public class Backyard implements Initializable {
     public static ArrayList<ZombieAppear> zombieApp;
+    public static ArrayList<Plant> PlantedPlants;
     @FXML
     ImageView peashooter, c1;
     @FXML
@@ -64,7 +69,7 @@ public class Backyard implements Initializable {
     private VBox cell[][];
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        ExecutorService exec = Executors.newFixedThreadPool(1);
         Level l = Game.getInstance().getLevel();
 
         System.out.println("In Backyard at level: "+l.getLvlNo());
@@ -72,10 +77,9 @@ public class Backyard implements Initializable {
         zombieApp = new ArrayList<>();
         intializecells();
         ArrayList<ImageView> sources = new ArrayList<>();
-//        sources.add(peashooter);
-//        sources.add(sunflower);
         addSources(sources);
         ArrayList<Pea> shotPeas = new ArrayList<>();
+        PlantedPlants = new ArrayList<>();
 
         for(int i=0; i<9; i++)
         {
@@ -85,7 +89,7 @@ public class Backyard implements Initializable {
                 for (int k=0; k<sources.size(); k++)
                 {
                     final ImageView source = sources.get(k);
-                    addFunctionalities(source,target, shotPeas);
+                    addFunctionalities(source,target, shotPeas, PlantedPlants);
                 }
             }
         }
@@ -99,7 +103,7 @@ public class Backyard implements Initializable {
                 int ran1 = r.nextInt(l.top) + l.below;
                 System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
@@ -112,7 +116,7 @@ public class Backyard implements Initializable {
                 int ran1 = r.nextInt(l.top) + l.below;
                 System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed);
+                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
@@ -120,8 +124,6 @@ public class Backyard implements Initializable {
                     zombieApp.add(temp);
                 }
             }
-
-
         }
 
 
@@ -143,10 +145,9 @@ public class Backyard implements Initializable {
 
     }
 
-    void addFunctionalities(final ImageView source, final VBox target, ArrayList<Pea> shotPea) {
+    void addFunctionalities(final ImageView source, final VBox target, ArrayList<Pea> shotPea, ArrayList<Plant> PlantedPlants) {
         Timer time = new Timer();
         source.setOnDragDetected(e -> {
-//            System.out.println("Drag detected");
 
             Dragboard db = source.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent cb = new ClipboardContent();
@@ -192,7 +193,6 @@ public class Backyard implements Initializable {
                 pickedPlant.setPreserveRatio(true);
                 pickedPlant.fitWidthProperty().bind(target.widthProperty());
                 pickedPlant.fitHeightProperty().bind(target.heightProperty());
-//                pickedPlant.preserveRatioProperty();
                 target.getChildren().add(pickedPlant);
                 if(pickedPlant.getImage() == peashooter.getImage()) {
                     ImageView p = new ImageView("sample/resources/pea.png");
@@ -204,7 +204,11 @@ public class Backyard implements Initializable {
                     Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY(), pickedPlant);
                     shotPea.add(temp);
                     time.schedule( temp , 0);
+                    PlantedPlants.add(new PeaShooter(pickedPlant));
                     hello.getChildren().add(p);
+                }
+                if(pickedPlant.getImage() == sunflower.getImage()){
+                    PlantedPlants.add(new Sunflower(pickedPlant));
                 }
             }
             e.consume();
@@ -217,7 +221,6 @@ public class Backyard implements Initializable {
         hello.getChildren().setAll(pane);
         event.consume();
     }
-
 
     void intializecells() {
         cell = new VBox[9][5];
@@ -297,8 +300,7 @@ public class Backyard implements Initializable {
                     break;
             }
         }
-
-
     }
+
 
 }

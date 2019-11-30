@@ -1,11 +1,13 @@
 package sample;
 
-import javax.swing.text.html.ImageView;
+
+import javafx.scene.image.ImageView;
+
 import java.util.TimerTask;
 
 public class PeaShooter extends Plant {
 
-    PeaShooter(int x, int y, ImageView i) {
-        super(x, y, i);
+    PeaShooter(ImageView i) {
+        super((int) i.getLayoutX(), (int) i.getLayoutY(), i, 40);
     }
 }

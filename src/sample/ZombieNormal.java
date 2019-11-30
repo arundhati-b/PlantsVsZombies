@@ -5,6 +5,6 @@ import javafx.scene.image.ImageView;
 public class ZombieNormal extends Zombie {
 
     ZombieNormal() {
-        super("sample/resources/Zombie_Normal.gif", 30, 0.5);
+        super("sample/resources/Zombie_Normal.gif", 30, 0.5,7);
     }
 }

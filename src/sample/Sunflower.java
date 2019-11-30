@@ -2,10 +2,10 @@ package sample;
 
 import javafx.scene.image.ImageView;
 
-public class Sunflower{
+public class Sunflower extends Plant{
     ImageView a;
-    int health = 30;
     Sunflower(ImageView a){
-        this.a = a;
+        //What are these int values for
+        super((int)a.getLayoutX(),(int) a.getLayoutY(), a, 30);
     }
 }
