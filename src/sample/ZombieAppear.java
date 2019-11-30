@@ -22,7 +22,7 @@ public class ZombieAppear extends TimerTask {
             @Override
             public void handle(long now) {
                 a.setLayoutX(a.getLayoutX() - speed);
-                if(a.getLayoutX() < 200){
+                if(a.getLayoutX() < 150){
                     za.speed = 0;
                 }
                 k++;
