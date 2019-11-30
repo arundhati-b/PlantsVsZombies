@@ -148,7 +148,7 @@
     </ProgressBar>
     <ImageView id="title.png" fitHeight="234.66668701171875" fitWidth="497.6666564941406" layoutX="331.0" layoutY="-87.0" scaleX="0.3" scaleY="0.3">
       <effect>
-        <DropShadow radius="126.771484375" width="255.0" />
+        <DropShadow radius="126.8857421875" width="255.0" />
       </effect>
       <image>
         <Image url="@resources/title.png" preserveRatio="true" smooth="true" />
@@ -216,7 +216,7 @@
         <Image url="@resources/walnut_full_life.gif" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="cherrybomb.jpeg.png" fitHeight="55.0" fitWidth="57.0" layoutX="23.0" layoutY="239.0">
+    <ImageView id="cherrybomb.jpeg.png" fx:id="cherrybomb" fitHeight="55.0" fitWidth="57.0" layoutX="23.0" layoutY="239.0">
       <image>
         <Image url="@resources/cherrybomb.jpeg.png" preserveRatio="true" smooth="true" />
       </image>
