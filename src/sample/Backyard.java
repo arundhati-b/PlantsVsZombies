@@ -40,7 +40,7 @@ public class Backyard implements Initializable {
     @FXML
     ImageView walnut, c4;
     @FXML
-    ImageView c5;
+    ImageView shovel;
     @FXML
     Label Score,sunCount;
     @FXML
@@ -282,7 +282,7 @@ public class Backyard implements Initializable {
         c2.setVisible(false);
         c3.setVisible(false);
         c4.setVisible(false);
-        c5.setVisible(false);
+        shovel.setVisible(false);
 
         peashooter.setVisible(false);
         sunflower.setVisible(false);
@@ -302,7 +302,7 @@ public class Backyard implements Initializable {
                     break;
                 case 4: c4.setVisible(true); walnut.setVisible(true); sources.add(walnut);
                     break;
-                case 5: c5.setVisible(true);
+                case 5: shovel.setVisible(true);
                     break;
             }
         }
