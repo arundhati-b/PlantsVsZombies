@@ -8,6 +8,6 @@ import java.util.TimerTask;
 public class PeaShooter extends Plant {
 
     PeaShooter(ImageView i) {
-        super((int) i.getLayoutX(), (int) i.getLayoutY(), i, 40);
+        super((int) i.getLayoutX(), (int) i.getLayoutY(), i, 40, 100);
     }
 }

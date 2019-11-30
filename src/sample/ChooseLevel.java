@@ -1,6 +1,7 @@
 package sample;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,6 +83,25 @@ public class ChooseLevel implements Initializable {
 
     public void callBackyard()
     {
+        Task<Integer> task = new Task<Integer>() {
+            @Override
+            protected Integer call() throws Exception {
+                while (true) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    int x = Game.getInstance().playGame();
+
+                    return x;
+                }
+            }
+        };
+        Thread t1 = new Thread(task);
+        t1.start();
+//        t1.setDaemon(true);
+
         try
         {
             AnchorPane pane = FXMLLoader.load((ChooseLevel.class).getResource("backyard.fxml"));

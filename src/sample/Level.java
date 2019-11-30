@@ -20,15 +20,27 @@ public abstract class Level implements Serializable {
     private int top;
     private int levelScore;
     private int lvlNo;
+    boolean levelLost;
+    boolean levelCompleted;
     Level(int top, int below, int lvlNo) {
+        sunCount = 100;
+        levelScore = 0;
         this.lvlNo = lvlNo;
         this.below = below;
         this.top = top;
+        levelLost = false;
+        levelCompleted = false;
     }
 
     public void play() throws GameLostException
     {
-//        ChooseLevel.callBackyard();
+        System.out.println("Playing level "+lvlNo);
+        while(!levelCompleted)
+        {
+            if(levelLost)
+                throw new GameLostException();
+        }
+        System.out.println("Level complete");
     }
 
     public int getSunCount() {
