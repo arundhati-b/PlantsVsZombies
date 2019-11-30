@@ -83,23 +83,26 @@ public class ChooseLevel implements Initializable {
 
     public void callBackyard()
     {
-        Task<Integer> task = new Task<Integer>() {
-            @Override
-            protected Integer call() throws Exception {
-                while (true) {
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    int x = Game.getInstance().playGame();
-
-                    return x;
-                }
-            }
-        };
-        Thread t1 = new Thread(task);
-        t1.start();
+//        Game.getInstance().playGame();
+//        Task<Integer> task = new Task<Integer>() {
+//            @Override
+//            protected Integer call() throws Exception {
+//                while (true) {
+//                    try {
+//                        Thread.sleep(5000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    int x = Game.getInstance().playGame();
+//                    if(x == 0)
+//
+//
+//                    return x;
+//                }
+//            }
+//        };
+//        Thread t1 = new Thread(task);
+//        t1.start();
 //        t1.setDaemon(true);
 
         try

@@ -1,7 +1,10 @@
 package sample;
 
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +23,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
@@ -32,6 +36,8 @@ import java.util.concurrent.ForkJoinPool;
 public class Backyard implements Initializable {
     public static ArrayList<ZombieAppear> zombieApp = new ArrayList<>();
     @FXML
+    AnchorPane hello;
+    @FXML
     ImageView peashooter, c1;
     @FXML
     ImageView sunflower, c2;
@@ -43,8 +49,6 @@ public class Backyard implements Initializable {
     ImageView shovel;
     @FXML
     Label Score,sunCount;
-    @FXML
-    AnchorPane hello;
     @FXML
     ImageView z1;
     @FXML
@@ -60,7 +64,7 @@ public class Backyard implements Initializable {
     @FXML
     ImageView lm1, lm2, lm3, lm4, lm5;
     @FXML
-    Button optionsBtn;
+    Button optionsBtn, lolBtn;
 
     @FXML
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
@@ -154,6 +158,88 @@ public class Backyard implements Initializable {
 
         time.schedule(sunView1, 8000);
         time.schedule(progressbar, 1000, 1000);
+
+        System.out.println("Initialization done");
+
+//        while (true) {
+//            if (progressbar.count == 1) {
+//                break;
+//            }
+//        }
+//        System.out.println("Changing level");
+//        try
+//        {
+//            Game.getInstance().setNextLevel();
+//        }
+//        catch (GameWinException e)
+//        {
+//
+//        }
+//        while (true) {
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                AnchorPane pane = FXMLLoader.load((ChooseLevel.class).getResource("backyard.fxml"));
+//                hello.getChildren().setAll(pane);
+//            } catch (IOException e) {
+//
+//            }
+//        }
+
+        Task<Integer> task = new Task<Integer>() {
+            @Override
+            protected Integer call() throws Exception {
+                while (true) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    while (true) {
+                        if (progressbar.count == 1) {
+                            break;
+                        }
+                    }
+                    Platform.runLater(new Runnable() {
+                        @Override public void run() {
+//                            try
+//                            {
+//                                Game.getInstance().setNextLevel();
+//                            }
+//                            catch(GameWinException e)
+//                            {
+//                                try
+//                                {
+//                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("gameWonScreen.fxml"));
+//                                    hello.getChildren().setAll(pane);
+//                                }
+//                                catch(IOException ex)
+//                                {
+//
+//                                }
+//                            }
+                            System.out.println("Changing level");
+                            try
+                            {
+                                AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
+                                hello.getChildren().setAll(pane);
+                            }
+                            catch(IOException e)
+                            {
+
+                            }
+                            System.out.println("level changed");
+                        }
+                    });
+                        return null;
+                    }
+                }
+        };
+        Thread t = new Thread(task);
+        t.start();
 
     }
 
@@ -286,6 +372,18 @@ public class Backyard implements Initializable {
         cell[8][2] = vx82;
         cell[8][3] = vx83;
         cell[8][4] = vx84;
+    }
+
+    public void changeLevel(ActionEvent event) throws IOException,GameWinException
+    {
+        Game.getInstance().setNextLevel();
+        System.out.println("Changing level");
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
+        hello.getChildren().setAll(pane);
+        System.out.println("level changed");
+        event.consume();
+
     }
 
     void addSources(ArrayList<ImageView> sources)
