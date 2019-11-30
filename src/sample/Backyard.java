@@ -180,8 +180,23 @@ public class Backyard implements Initializable {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    final int x;
                     while (true) {
                         if (progressbar.count >= 1) {
+                            x = 1;
+                            break;
+                        }
+                        int y=0;
+                        for (ZombieAppear zombieAppear : zombieApp) {
+                            if(zombieAppear.a.getLayoutX() <= 140 && zombieAppear.a.isVisible())
+                            {
+                                y=2;
+                                break;
+                            }
+                        }
+                        if(y == 2)
+                        {
+                            x = 2;
                             break;
                         }
                     }
@@ -189,17 +204,33 @@ public class Backyard implements Initializable {
                         @Override public void run() {
                             time.cancel();
 
-                            System.out.println("Changing level");
-                            try
+                            if(x == 1)
                             {
-                                AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
-                                hello.getChildren().setAll(pane);
-                            }
-                            catch(IOException e)
-                            {
+                                System.out.println("Changing level");
+                                try
+                                {
+                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
+                                    hello.getChildren().setAll(pane);
+                                }
+                                catch(IOException e)
+                                {
 
+                                }
+                                System.out.println("level changed");
                             }
-                            System.out.println("level changed");
+                            else if(x == 2)
+                            {
+                                try
+                                {
+                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+                                    hello.getChildren().setAll(pane);
+                                }
+                                catch(IOException e)
+                                {
+
+                                }
+                            }
+
                         }
                     });
                         return null;

@@ -15,12 +15,11 @@ public class LawnMower extends TimerTask{
     int y;
     int attack = 10000;
     LawnMower(int x, int y, ImageView lm){
-<<<<<<< HEAD
         this.x = x;
         this.y = y;
-=======
-        super(x , y , lm ,100,100);
->>>>>>> 71509467bb2ce720eab967512a6e755ef204f54e
+
+//        super(x , y , lm ,100,100);
+
         this.lm = lm;
     }
 
@@ -49,8 +48,9 @@ public class LawnMower extends TimerTask{
                 lm.setLayoutX(lm.getLayoutX() + 10);
             }
             System.out.println("Now " + lm.getLayoutY());
-            if (lm.getLayoutY() > 1200) {
-                lm.setVisible(false);
+            if (lm.getLayoutY() > 500) {
+//                lm.setVisible(false);
+                lm.setDisable(true);
             }
             this.collide(Backyard.zombieApp);
         }
