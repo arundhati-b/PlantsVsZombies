@@ -31,7 +31,8 @@ public class selectPlayer implements Initializable {
     public void initialize(URL location, ResourceBundle resources)
     {
         vb.setSpacing(5);
-        for(String p: Player.players.keySet())
+        System.out.println("list size"+playerList.getInstance().getList().size());
+        for(String p: playerList.getInstance().getList().keySet())
         {
             RadioButton n = new RadioButton(p);
             r.add(n);
@@ -42,13 +43,14 @@ public class selectPlayer implements Initializable {
             r.get(0).setSelected(true);
     }
 
-    public void ticked() throws IOException
+    public void ticked() throws IOException, ClassNotFoundException
     {
         RadioButton rb = (RadioButton) tg.getSelectedToggle();
         if(rb == null)
             return;
         String n = rb.getText();
-//        Main.deserialize(n);
+
+        Main.deserialize(n);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         loadPane.getChildren().setAll(pane);
     }

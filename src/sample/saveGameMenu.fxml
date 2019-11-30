@@ -113,7 +113,7 @@
         <Image url="@resources/Buttons/saveGameMenu@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="tickBtn@3x.png" fx:id="save" fitHeight="65.0" fitWidth="100.0" layoutX="461.0" layoutY="428.0" onMouseClicked="#goback">
+    <ImageView id="tickBtn@3x.png" fx:id="save" fitHeight="65.0" fitWidth="100.0" layoutX="461.0" layoutY="428.0" onMouseClicked="#tick">
       <image>
         <Image url="@resources/Buttons/tickBtn@3x.png" preserveRatio="true" smooth="true" />
       </image>
@@ -123,11 +123,10 @@
         <Image url="@resources/Buttons/crossBtn2@3x.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label layoutX="431.0" layoutY="260.0" text="Enter username:" textAlignment="CENTER" textFill="WHITE">
+    <Label layoutX="432.0" layoutY="196.0" prefHeight="226.99990844726562" prefWidth="317.0" text="Are you sure you want to save and exit to main menu?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
-        <Font name="Bukhari Script" size="45.0" />
+        <Font name="Bukhari Script" size="35.0" />
       </font>
     </Label>
-    <TextField layoutX="436.0" layoutY="338.0" prefHeight="45.0" prefWidth="314.0" />
   </children>
 </AnchorPane>

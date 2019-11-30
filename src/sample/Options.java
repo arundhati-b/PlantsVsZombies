@@ -19,6 +19,7 @@ public class Options {
 
     @FXML
     void backToGame(ActionEvent event) throws Exception{
+//        Main.deserialize();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
         optionPane.getChildren().setAll(pane);
         event.consume();

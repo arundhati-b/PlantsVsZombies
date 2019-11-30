@@ -1,13 +1,16 @@
 package sample;
 
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public abstract class Plant {
+import java.io.Serializable;
+
+public abstract class Plant implements Serializable {
     int health;
     double posx ;
     double posy;
-    ImageView image;
+    transient ImageView image;
     Cell loc;
     Plant(int x, int y, ImageView i, int health)
     {

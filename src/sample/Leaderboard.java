@@ -41,7 +41,7 @@ public class Leaderboard implements Initializable {
     public void initialize(URL location, ResourceBundle resources)
     {
         ArrayList<Player> scores = new ArrayList<>();
-        Player.players.forEach((k,v) -> {
+        playerList.getInstance().getList().forEach((k,v) -> {
             scores.add(v);
         });
 //        scores.add(new Player("ryan",Game.getInstance()));

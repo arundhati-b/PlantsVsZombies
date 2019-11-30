@@ -25,18 +25,20 @@ public class loginOption {
         {
             return;
         }
-        if(!in.matches("^[_A-Za-z0-9]+$"))
+        if(!in.matches("^[_A-Za-z0-9]+$") || in.length() >= 10)
         {
 //            System.out.println("yoo");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Invalid username");
-            alert.setContentText("Username should only contain A-Z characters (upper and lower), digits 0-9 and underscore ('_')");
+            alert.setContentText("Username should only contain A-Z characters (upper and lower), digits 0-9 and underscore ('_') and should have maximum length 10");
             alert.showAndWait();
             return;
         }
         System.out.print("Username: "+in);
-        Game.clear();
-        Game.getInstance(in);
+        Player.setClear();
+        Player p = Player.getInstance(in);
+        p.setGame(Game.getInstance(p));
+//        playerList.getInstance().addPlayer(p);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         loadPane.getChildren().setAll(pane);
     }
