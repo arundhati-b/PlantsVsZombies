@@ -5,20 +5,11 @@ import javafx.scene.image.ImageView;
 
 import java.util.TimerTask;
 
-public class LawnMower extends TimerTask {
+public class LawnMower extends Plant {
     ImageView lm;
 
-    LawnMower(ImageView lm){
+    LawnMower(int x, int y, ImageView lm){
+        super(x , y , lm ,10_000);
         this.lm = lm;
-    }
-    @Override
-    public void run() {
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if(lm.getLayoutX() < 1000)
-                lm.setLayoutX(lm.getLayoutX() + 5);
-            }
-        }.start();
     }
 }

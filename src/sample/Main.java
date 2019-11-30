@@ -53,7 +53,6 @@ public class Main extends Application {
     static void serialize() throws IOException, NullPointerException
     {
         Game g = Game.getInstance();
-//        g.getLevel().saveValues();
 
         ObjectOutputStream outstream = null;
         try {

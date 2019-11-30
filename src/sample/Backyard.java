@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import sun.security.provider.Sun;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -83,11 +84,11 @@ public class Backyard implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Level l = Game.getInstance().getLevel();
-        lawnMowers.add(new LawnMower(lm1));
-        lawnMowers.add(new LawnMower(lm2));
-        lawnMowers.add(new LawnMower(lm3));
-        lawnMowers.add(new LawnMower(lm4));
-        lawnMowers.add(new LawnMower(lm5));
+        lawnMowers.add(new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1));
+        lawnMowers.add(new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2));
+        lawnMowers.add(new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3));
+        lawnMowers.add(new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4));
+        lawnMowers.add(new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5));
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
 //        zombieApp = new ArrayList<>();
@@ -109,8 +110,6 @@ public class Backyard implements Initializable {
                 }
             }
         }
-
-
 
         Random r = new Random();
         for(int i = 0; i < l.getLvlNo(); i++){
@@ -134,15 +133,13 @@ public class Backyard implements Initializable {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-//                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
             }
         }
 
-
-        SunView sunView1  = new SunView(sun1, sunCount);
+        SunView sunView1  = new SunView(sun1, sunCount,0);
         ProgBar progressbar = new ProgBar(pb);
         Timer time = new Timer();
         int c = 0;
@@ -308,8 +305,21 @@ public class Backyard implements Initializable {
                         hello.getChildren().add(p);
                     }
                     if(pickedPlant.getImage() == sunflower.getImage()){
+                        ImageView p = new ImageView("sample/resources/sun.png");
+                        p.setVisible(true);
+                        p.setLayoutX(target.getLayoutX());
+                        p.setFitWidth(60);
+                        p.setFitHeight(60);
+                        p.setLayoutY(target.getLayoutY());
+                        hello.getChildren().add(p);
+                        double[] a = {target.getLayoutX(), target.getLayoutY()};
                         pickedPlant.setLayoutX(target.getLayoutX());
                         pickedPlant.setLayoutY(target.getLayoutY());
+                        Sunflower sf = new Sunflower(pickedPlant);
+                        SunView k = new SunView(p, sf, sunCount,1, a);
+                        sf.sv = k;
+                        System.out.println(sf.image.getLayoutX());
+                        k.run();
                         PlantedPlants.add(new Sunflower(pickedPlant));
                     }
 

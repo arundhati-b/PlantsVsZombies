@@ -8,8 +8,13 @@ import java.io.Serializable;
 
 public abstract class Plant implements Serializable {
     int health;
+<<<<<<< HEAD
+    int attack;
+=======
     int cost;
+>>>>>>> 147edbaffb46d987c68b833dfbc2bd2b89274592
     double posx ;
+    public boolean status = true;
     double posy;
     transient ImageView image;
     Cell loc;
