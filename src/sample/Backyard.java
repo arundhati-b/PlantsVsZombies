@@ -67,7 +67,7 @@ public class Backyard implements Initializable {
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
 
     private VBox cell[][];
-    ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
+    public static ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
 
     @FXML
     void clickOptions(ActionEvent event) throws Exception {
@@ -80,11 +80,18 @@ public class Backyard implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Level l = Game.getInstance().getLevel();
-        lawnMowers.add(new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1));
-        lawnMowers.add(new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2));
-        lawnMowers.add(new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3));
-        lawnMowers.add(new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4));
-        lawnMowers.add(new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5));
+        LawnMower lmwr1 = new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1);
+        LawnMower lmwr2 = new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2);
+        LawnMower lmwr3 = new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3);
+        LawnMower lmwr4 = new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4);
+        LawnMower lmwr5 = new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5);
+
+        lawnMowers.add(lmwr1);
+        lawnMowers.add(lmwr2);
+        lawnMowers.add(lmwr3);
+        lawnMowers.add(lmwr4);
+        lawnMowers.add(lmwr5);
+        System.out.println(lm1.getLayoutX() + "  " + lm2.getLayoutY());
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
 //        zombieApp = new ArrayList<>();
@@ -151,6 +158,11 @@ public class Backyard implements Initializable {
 
         time.schedule(sunView1, 8000);
         time.schedule(progressbar, 1000, 1000);
+        time.schedule(lmwr1, 0,100);
+        time.schedule(lmwr2, 0,100);
+        time.schedule(lmwr3, 0,100);
+        time.schedule(lmwr4, 0,100);
+        time.schedule(lmwr5, 0,100);
 
     }
 

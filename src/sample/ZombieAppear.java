@@ -31,10 +31,10 @@ public class ZombieAppear extends TimerTask {
                 }
 
                 if(k > 100){
-//                    System.out.println("HERERRERERERERE");
                     plantAttacK(Game.getInstance().getLevel().PlantedPlants, za);
                     k = 0;
                 }
+                mowerKill(Backyard.lawnMowers, za);
 
             }
         };
@@ -62,12 +62,14 @@ public class ZombieAppear extends TimerTask {
     ImageView a;
 
 
-//    void mowerKill(ArrayList<LawnMower> lawn, ZombieAppear z){
-//        for(LawnMower l : lawn){
-//            if(l.image.getLayoutY() > )
-//        }
-//
-//    }
+    void mowerKill(ArrayList<LawnMower> lawn, ZombieAppear z){
+        for(LawnMower l : lawn){
+            if(l.lm.getLayoutY() > z.a.getLayoutY() + 40 && Math.abs(l.lm.getLayoutX() - z.a.getLayoutX()) < 50){
+                l.collide(Backyard.zombieApp);
+            }
+        }
+
+    }
 
 
     @Override
