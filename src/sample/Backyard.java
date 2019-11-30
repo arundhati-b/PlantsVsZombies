@@ -319,6 +319,13 @@ public class Backyard implements Initializable {
                             return;
                         int x = Integer.parseInt(sunCount.getText());
                         sunCount.setText(Integer.toString(x-150));
+                        for(ZombieAppear z : zombieApp){
+                            if(((z.a.getLayoutY() - pickedPlant.getLayoutY())*(z.a.getLayoutY() - pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()*(z.a.getLayoutX() - pickedPlant.getLayoutX())) < 900)){
+
+                                z.a.setVisible(false);
+                                z.kill();
+                            }
+                        }
                     }
                     if(pickedPlant.getImage() == walnut.getImage()) {
                         if(Integer.parseInt(sunCount.getText()) < 50)
@@ -426,10 +433,18 @@ public class Backyard implements Initializable {
                                         cherrybomb.setVisible(true);
                                         c3.setOpacity(1);
                                         c3.setDisable(false);
+                                        for(ZombieAppear z : zombieApp){
+
+                                            if(z.a.isVisible() && (z.a.getLayoutY() - pickedPlant.getLayoutY()) * (z.a.getLayoutY() - pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()) * ((z.a.getLayoutX()) - pickedPlant.getLayoutX()) < 900){
+                                                z.a.setVisible(false);
+                                                z.kill();
+                                            }
+                                        }
                                     }
                                 });
                             }
                         }).start();
+
                     }
 
                     if(pickedPlant.getImage()  == walnut.getImage()){
