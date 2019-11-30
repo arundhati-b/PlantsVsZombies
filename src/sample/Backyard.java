@@ -58,7 +58,7 @@ public class Backyard implements Initializable {
     @FXML
     ProgressBar pb;
     @FXML
-    ImageView lm3;
+    ImageView lm1, lm2, lm3, lm4, lm5;
     @FXML
     Button optionsBtn;
 
@@ -76,9 +76,13 @@ public class Backyard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        ExecutorService exec = Executors.newFixedThreadPool(1); //purpose???
-        Level l = Game.getInstance().getLevel();
 
+        Level l = Game.getInstance().getLevel();
+        lawnMowers.add(new LawnMower(lm1));
+        lawnMowers.add(new LawnMower(lm2));
+        lawnMowers.add(new LawnMower(lm3));
+        lawnMowers.add(new LawnMower(lm4));
+        lawnMowers.add(new LawnMower(lm5));
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
 //        zombieApp = new ArrayList<>();
@@ -113,7 +117,6 @@ public class Backyard implements Initializable {
                     ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1200);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
-//                    System.out.println(temp.a.getLayoutX() + " " + temp.a.getLayoutY());
                     hello.getChildren().addAll(temp.a);
                     zombieApp.add(temp);
                 }
@@ -210,7 +213,6 @@ public class Backyard implements Initializable {
                     Pea temp = new Pea(p, target.getLayoutX(), target.getLayoutY(), pickedPlant);
                     pickedPlant.setLayoutX(target.getLayoutX());
                     pickedPlant.setLayoutY(target.getLayoutY());
-                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     shotPea.add(temp);
                     time.schedule( temp , 0);
                     PlantedPlants.add(new PeaShooter(pickedPlant));
@@ -219,8 +221,13 @@ public class Backyard implements Initializable {
                 if(pickedPlant.getImage() == sunflower.getImage()){
                     pickedPlant.setLayoutX(target.getLayoutX());
                     pickedPlant.setLayoutY(target.getLayoutY());
-                    System.out.println(pickedPlant.getLayoutX()+ " Vaibhav Vaibhav  " + pickedPlant.getLayoutY());
                     PlantedPlants.add(new Sunflower(pickedPlant));
+                }
+
+                if(pickedPlant.getImage()  == walnut.getImage()){
+                    pickedPlant.setLayoutX(target.getLayoutX());
+                    pickedPlant.setLayoutY(target.getLayoutY());
+                    PlantedPlants.add(new Walnut(pickedPlant));
                 }
             }
             e.consume();

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 
 public class ZombieAppear extends TimerTask {
+
     int health;
     double speed;
     int k = 0;
@@ -70,7 +71,8 @@ public class ZombieAppear extends TimerTask {
                 p.image.setLayoutX(p.posx);
                 p.image.setLayoutY(p.posy);
             }
-            if(p.image.isVisible() && za.a.isVisible() && Math.abs(p.image.getLayoutX() - za.a.getLayoutX()) <= 100 && Math.abs(p.image.getLayoutY() - za.a.getLayoutY()) <= 100){
+
+            if(p.image.isVisible() && za.a.isVisible() && Math.abs(p.image.getLayoutX() - za.a.getLayoutX()) <= 30 && Math.abs(p.image.getLayoutY() - za.a.getLayoutY()) <= 50){
                 za.speed = 0;
                 System.out.println("Here");
                 p.health = p.health - za.attack;
