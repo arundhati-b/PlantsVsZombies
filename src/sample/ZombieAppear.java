@@ -49,11 +49,26 @@ public class ZombieAppear extends TimerTask {
     }
 
     void kill(){
-        t.stop();
+        try {
+            a.setVisible(false);
+            t.stop();
+        }
+        catch(Exception e){
+
+        }
         a.setVisible(false);
     }
 
     ImageView a;
+
+
+//    void mowerKill(ArrayList<LawnMower> lawn, ZombieAppear z){
+//        for(LawnMower l : lawn){
+//            if(l.image.getLayoutY() > )
+//        }
+//
+//    }
+
 
     @Override
     public void run() {
@@ -79,10 +94,18 @@ public class ZombieAppear extends TimerTask {
                 if(p.health <= 0){
 
                     p.image.setVisible(false);
+                    p.status = false;
                     p.image.setLayoutX(-100);
                     p.image.setLayoutY(-100);
                     za.speed = 0.5;
+                    try{
+                        Sunflower p1 = (Sunflower) p;
+                        System.out.println("BYE");
+                        p1.sv.kill();
+                    }
+                    catch(Exception e){
 
+                    }
                 }
             }
         }

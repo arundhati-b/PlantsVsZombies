@@ -8,7 +8,9 @@ import java.io.Serializable;
 
 public abstract class Plant implements Serializable {
     int health;
+    int attack;
     double posx ;
+    public boolean status = true;
     double posy;
     transient ImageView image;
     Cell loc;

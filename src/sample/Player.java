@@ -19,7 +19,7 @@ public final class Player implements Serializable,Comparable<Player> {
         playerList.getInstance().addPlayer(this);
         score = 0;
 //        score = s;
-        highestLevel = 1; // change to 1
+        highestLevel = 5; // change to 1
     }
     public static Player getInstance()
     {
