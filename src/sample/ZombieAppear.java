@@ -22,7 +22,7 @@ public class ZombieAppear extends TimerTask {
             @Override
             public void handle(long now) {
                 a.setLayoutX(a.getLayoutX() - speed);
-                if(a.getLayoutX() < 150){
+                if(a.getLayoutX() < 140){
                     za.speed = 0;
                 }
                 k++;
@@ -51,6 +51,7 @@ public class ZombieAppear extends TimerTask {
     void kill(){
         try {
             a.setVisible(false);
+            a.setDisable(true);
             t.stop();
         }
         catch(Exception e){
@@ -64,7 +65,7 @@ public class ZombieAppear extends TimerTask {
 
     void mowerKill(ArrayList<LawnMower> lawn, ZombieAppear z){
         for(LawnMower l : lawn){
-            if(l.lm.getLayoutY() > z.a.getLayoutY() + 40 && Math.abs(l.lm.getLayoutX() - z.a.getLayoutX()) < 50){
+            if(l.lm.getLayoutY() > z.a.getLayoutY() + 40 && Math.abs(l.lm.getLayoutX() - z.a.getLayoutX()) < 50 && !l.lm.isDisabled()){
                 l.collide(Backyard.zombieApp);
             }
         }
