@@ -47,7 +47,7 @@ public class LawnMower extends TimerTask{
             if (detected) {
                 lm.setLayoutX(lm.getLayoutX() + 10);
             }
-            System.out.println("Now " + lm.getLayoutY());
+//            System.out.println("Now " + lm.getLayoutY());
             if (lm.getLayoutY() > 500) {
 //                lm.setVisible(false);
                 lm.setDisable(true);

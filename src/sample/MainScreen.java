@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,12 +61,18 @@ public class MainScreen implements Initializable {
     }
     public void clickNewGame() throws Exception
     {
+        Main.loadedSession = false;
 //        throw new Exception();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ChooseLevel.fxml"));
         rootPane1.getChildren().setAll(pane);
     }
     public void clickLoadGame() throws Exception
     {
+        if(!Main.loadedSession)
+        {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("emptySavedGamesMenu.fxml"));
+            rootPane1.getChildren().setAll(pane);
+        }
         Main.deserialize(Player.getInstance().getName());
         AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
         rootPane1.getChildren().setAll(pane);

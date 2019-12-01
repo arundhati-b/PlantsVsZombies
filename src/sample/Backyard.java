@@ -93,7 +93,10 @@ public class Backyard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        zombieApp.clear();
+        lawnMowers.clear();
 
+//        System.out.println(Main.loadedSession);
         Level l = Game.getInstance().getLevel();
         LawnMower lmwr1 = new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1);
         LawnMower lmwr2 = new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2);
@@ -164,7 +167,7 @@ public class Backyard implements Initializable {
             int c=0;
             for(ZombieAppear z : zombieApp){
 //            System.out.println("Here");
-                c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
+                c += r.nextInt(2000) + (600 - l.getLvlNo()*100);
 //            c += 100;
                 if(c > 50000000){
                     c = 0;
@@ -613,7 +616,7 @@ public class Backyard implements Initializable {
                             @Override public void run() {
                                 try
                                 {
-                                    Thread.sleep(5000);
+                                    Thread.sleep(1000);
                                 }
                                 catch(InterruptedException e)
                                 {
@@ -621,16 +624,30 @@ public class Backyard implements Initializable {
                                 }
                                 Platform.runLater(new Runnable() {
                                     @Override public void run() {
-                                        cherrybomb.setVisible(true);
-                                        c3.setOpacity(1);
-                                        c3.setDisable(false);
                                         for(ZombieAppear z : zombieApp){
-
-                                            if(z.a.isVisible() && (z.a.getLayoutY() - pickedPlant.getLayoutY()) * (z.a.getLayoutY() - pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()) * ((z.a.getLayoutX()) - pickedPlant.getLayoutX()) < 900){
+                                            System.out.println(z.a.getLayoutX() + "  " + pickedPlant.getLayoutX());
+                                            if(z.a.isVisible() && (z.a.getLayoutY() - pickedPlant.getLayoutY()) * (z.a.getLayoutY() -  pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()) * ((z.a.getLayoutX()) - pickedPlant.getLayoutX()) < 900){
                                                 z.a.setVisible(false);
                                                 z.kill();
                                             }
                                         }
+                                        pickedPlant.setDisable(true);
+                                        pickedPlant.setVisible(false);
+                                        System.out.println("BOOOOOOOM");
+//                                        target.setDisable(true);
+//                                        target.setVisible(false);
+                                        try
+                                        {
+                                            Thread.sleep(1000);
+                                        }
+                                        catch(InterruptedException e)
+                                        {
+
+                                        }
+                                        cherrybomb.setVisible(true);
+                                        c3.setOpacity(1);
+                                        c3.setDisable(false);
+
                                     }
                                 });
                             }
