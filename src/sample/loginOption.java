@@ -35,6 +35,13 @@ public class loginOption {
             return;
         }
         System.out.print("Username: "+in);
+        if(playerList.getInstance().getList().containsKey(in))
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("User already exists");
+            alert.setContentText("Opening existing user profile");
+            alert.showAndWait();
+        }
         Player.setClear();
         Player p = Player.getInstance(in);
         p.setGame(Game.getInstance(p));

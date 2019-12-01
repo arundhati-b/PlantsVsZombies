@@ -67,14 +67,25 @@ public class Backyard4 implements Initializable {
     @FXML
     Button optionsBtn, lolBtn;
 
+
     @FXML
     VBox vx00,vx01,vx02,vx03,vx04,vx10,vx11,vx12,vx13,vx14,vx20,vx21,vx22,vx23,vx24,vx30,vx31,vx32,vx33,vx34,vx40,vx41,vx42,vx43,vx44,vx50,vx51,vx52,vx53,vx54,vx60,vx61,vx62,vx63,vx64,vx70,vx71,vx72,vx73,vx74,vx80,vx81,vx82,vx83,vx84;
 
     private VBox cell[][];
-    ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
+    public static ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
+    transient Timer time = new Timer();
 
     @FXML
     void clickOptions(ActionEvent event) throws Exception {
+        Player.getInstance().saveValues(Integer.parseInt(Score.getText()));
+        ArrayList<Zombie> zombies = new ArrayList<>();
+        for (ZombieAppear z : zombieApp) {
+            Zombie zombie = new Zombie(z.x,z.health,z.speed,z.attack,z.a.getLayoutX(),z.a.getLayoutY(),z.storedDelay);
+            zombies.add(zombie);
+        }
+        Game.getInstance().getLevel().saveValues(Integer.parseInt(sunCount.getText()),Integer.parseInt(Score.getText()),zombies);
+
+        Main.serialize();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
         hello.getChildren().setAll(pane);
         event.consume();
@@ -84,11 +95,18 @@ public class Backyard4 implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Level l = Game.getInstance().getLevel();
-        lawnMowers.add(new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1));
-        lawnMowers.add(new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2));
-        lawnMowers.add(new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3));
-        lawnMowers.add(new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4));
-        lawnMowers.add(new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5));
+        LawnMower lmwr1 = new LawnMower ((int)lm1.getLayoutX(), (int)lm1.getLayoutY(),lm1);
+        LawnMower lmwr2 = new LawnMower ((int)lm2.getLayoutX(), (int)lm2.getLayoutY(),lm2);
+        LawnMower lmwr3 = new LawnMower ((int)lm3.getLayoutX(), (int)lm3.getLayoutY(),lm3);
+        LawnMower lmwr4 = new LawnMower ((int)lm4.getLayoutX(), (int)lm4.getLayoutY(),lm4);
+        LawnMower lmwr5 = new LawnMower ((int)lm5.getLayoutX(), (int)lm5.getLayoutY(),lm5);
+
+        lawnMowers.add(lmwr1);
+        lawnMowers.add(lmwr2);
+        lawnMowers.add(lmwr3);
+        lawnMowers.add(lmwr4);
+        lawnMowers.add(lmwr5);
+        System.out.println(lm1.getLayoutX() + "  " + lm2.getLayoutY());
         System.out.println("In Backyard at level: "+l.getLvlNo());
 
 //        zombieApp = new ArrayList<>();
@@ -110,15 +128,182 @@ public class Backyard4 implements Initializable {
                 }
             }
         }
+        if(Main.loadedSession)
+        {
+            init_loaded(l,lawnMowers);
+        }
+        else
+        {
+            Random r = new Random();
+            for(int i = 0; i < l.getLvlNo(); i++){
+                if( i == 0 ){
+                    Zombie t1 = new ZombieNormal();
+                    int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+//                System.out.println("ran1 "+ran1);
+                    for(int j = 0; j < ran1; j++) {
+                        ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
+                        temp.a.setLayoutX(1200);
+                        temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                        hello.getChildren().addAll(temp.a);
+                        zombieApp.add(temp);
+                    }
+                }
+                else if (i == 1){
+                    Zombie t1 = new ZombieCone();
+                    int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                    System.out.println("ran1 "+ran1);
+                    for(int j = 0; j < ran1; j++) {
+                        ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
+                        temp.a.setLayoutX(1500);
+                        temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                        hello.getChildren().addAll(temp.a);
+                        zombieApp.add(temp);
+                    }
+                }
+            }
+            int c=0;
+            for(ZombieAppear z : zombieApp){
+//            System.out.println("Here");
+                c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
+//            c += 100;
+                if(c > 50000000){
+                    c = 0;
+                }
+                z.storedDelay = c;
+                time.schedule(z, c);
+            }
+            SunView sunView1  = new SunView(sun1, sunCount,0);
+            ProgBar progressbar = new ProgBar(pb);
+
+            time.schedule(sunView1, 200);
+            time.schedule(progressbar, 1000, 1000);
+            time.schedule(lmwr1, 0,100);
+            time.schedule(lmwr2, 0,100);
+            time.schedule(lmwr3, 0,100);
+            time.schedule(lmwr4, 0,100);
+            time.schedule(lmwr5, 0,100);
+
+            System.out.println("Initialization done");
+
+            Task<Integer> task = new Task<Integer>() {
+                @Override
+                protected Integer call() throws Exception {
+                    while (true) {
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        final int x;
+                        while (true) {
+                            if (progressbar.count >= 1) {
+                                x = 1;
+                                break;
+                            }
+                            int y=0;
+                            for (ZombieAppear zombieAppear : zombieApp) {
+                                if(zombieAppear.a.getLayoutX() <= 140 && zombieAppear.a.isVisible())
+                                {
+                                    y=2;
+                                    break;
+                                }
+                            }
+                            if(y == 2)
+                            {
+                                x = 2;
+                                break;
+                            }
+                        }
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                time.cancel();
+
+                                if(x == 1)
+                                {
+                                    System.out.println("Changing level");
+                                    try
+                                    {
+                                        AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
+                                        hello.getChildren().setAll(pane);
+                                    }
+                                    catch(IOException e)
+                                    {
+
+                                    }
+                                    System.out.println("level changed");
+                                }
+                                else if(x == 2)
+                                {
+                                    try
+                                    {
+                                        AnchorPane pane = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+                                        hello.getChildren().setAll(pane);
+                                    }
+                                    catch(IOException e)
+                                    {
+
+                                    }
+                                }
+
+                            }
+                        });
+                        return null;
+                    }
+                }
+            };
+            Thread t = new Thread(task);
+            t.start();
+
+        }
+
+    }
+
+    public void init_loaded(Level l,ArrayList<LawnMower> lm)
+    {
+        Game g = Game.getInstance();
+
+        for(Plant p: l.PlantedPlants)
+        {
+            Cell c = p.loc;
+            if(p.getClass() == PeaShooter.class)
+            {
+                cell[c.x][c.y].getChildren().add(peashooter);
+            }
+            if(p.getClass() == Walnut.class)
+            {
+                cell[c.x][c.y].getChildren().add(walnut);
+            }
+            if(p.getClass() == Cherrybomb.class)
+            {
+                cell[c.x][c.y].getChildren().add(cherrybomb);
+            }
+            if(p.getClass() == Sunflower.class)
+            {
+                cell[c.x][c.y].getChildren().add(sunflower);
+            }
+        }
+        Timer time = new Timer();
+        for(Zombie z: l.zombies)
+        {
+            ZombieAppear temp = new ZombieAppear(z.image, z.health, z.speed, z.attack);
+            temp.a.setLayoutX(z.x);
+            temp.a.setLayoutY(z.y);
+            hello.getChildren().addAll(temp.a);
+            zombieApp.add(temp);
+            time.schedule(temp,z.storedDelay);
+        }
+        l.zombies.clear();
 
         Random r = new Random();
         for(int i = 0; i < l.getLvlNo(); i++){
             if( i == 0 ){
                 Zombie t1 = new ZombieNormal();
-                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow() - l.zombies.size();
+                if(ran1 < 0)
+                    ran1 = 0;
 //                System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
+                    ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1200);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     hello.getChildren().addAll(temp.a);
@@ -127,10 +312,12 @@ public class Backyard4 implements Initializable {
             }
             else if (i == 1){
                 Zombie t1 = new ZombieCone();
-                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow() - l.zombies.size();
+                if(ran1 < 0)
+                    ran1 = 0;
                 System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
+                    ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     hello.getChildren().addAll(temp.a);
@@ -138,23 +325,35 @@ public class Backyard4 implements Initializable {
                 }
             }
         }
-
-        SunView sunView1  = new SunView(sun1, sunCount,0);
-        ProgBar progressbar = new ProgBar(pb);
-        Timer time = new Timer();
-        int c = 0;
-        for(ZombieAppear z : zombieApp){
+        int c=0;
+        for(ZombieAppear zom : zombieApp){
 //            System.out.println("Here");
+            ZombieAppear z = new ZombieAppear(zom.x,zom.health,zom.speed,zom.attack);
             c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
 //            c += 100;
             if(c > 50000000){
                 c = 0;
             }
+            zom.storedDelay = c;
+
             time.schedule(z, c);
         }
 
-        time.schedule(sunView1, 8000);
+        SunView sunView1  = new SunView(sun1, sunCount,0);
+        ProgBar progressbar = new ProgBar(pb);
+
+        time.schedule(sunView1, 200);
         time.schedule(progressbar, 1000, 1000);
+
+        for(LawnMower lmw : lawnMowers)
+        {
+            time.schedule(lmw,0,100);
+        }
+//        time.schedule(lmwr1, 0,100);
+//        time.schedule(lmwr2, 0,100);
+//        time.schedule(lmwr3, 0,100);
+//        time.schedule(lmwr4, 0,100);
+//        time.schedule(lmwr5, 0,100);
 
         System.out.println("Initialization done");
 
@@ -167,8 +366,23 @@ public class Backyard4 implements Initializable {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    final int x;
                     while (true) {
-                        if (progressbar.count == 1) {
+                        if (progressbar.count >= 1) {
+                            x = 1;
+                            break;
+                        }
+                        int y=0;
+                        for (ZombieAppear zombieAppear : zombieApp) {
+                            if(zombieAppear.a.getLayoutX() <= 140 && zombieAppear.a.isVisible())
+                            {
+                                y=2;
+                                break;
+                            }
+                        }
+                        if(y == 2)
+                        {
+                            x = 2;
                             break;
                         }
                     }
@@ -176,17 +390,33 @@ public class Backyard4 implements Initializable {
                         @Override public void run() {
                             time.cancel();
 
-                            System.out.println("Changing level");
-                            try
+                            if(x == 1)
                             {
-                                AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
-                                hello.getChildren().setAll(pane);
-                            }
-                            catch(IOException e)
-                            {
+                                System.out.println("Changing level");
+                                try
+                                {
+                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
+                                    hello.getChildren().setAll(pane);
+                                }
+                                catch(IOException e)
+                                {
 
+                                }
+                                System.out.println("level changed");
                             }
-                            System.out.println("level changed");
+                            else if(x == 2)
+                            {
+                                try
+                                {
+                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+                                    hello.getChildren().setAll(pane);
+                                }
+                                catch(IOException e)
+                                {
+
+                                }
+                            }
+
                         }
                     });
                     return null;
@@ -195,6 +425,9 @@ public class Backyard4 implements Initializable {
         };
         Thread t = new Thread(task);
         t.start();
+
+
+        Main.loadedSession = false;
 
     }
 
@@ -240,9 +473,7 @@ public class Backyard4 implements Initializable {
                     pickedPlant.setImage(((ImageView)s).getImage());
                 else
                     pickedPlant.setImage(db.getImage());
-                pickedPlant.setPreserveRatio(true);
-                pickedPlant.fitWidthProperty().bind(target.widthProperty());
-                pickedPlant.fitHeightProperty().bind(target.heightProperty());
+
 
                 if(pickedPlant.getImage() == shovel.getImage())
                 {
@@ -253,16 +484,72 @@ public class Backyard4 implements Initializable {
                     target.getChildren().clear();
                     return;
                 }
+
+                pickedPlant.setPreserveRatio(true);
+//                pickedPlant.fitWidthProperty().bind(target.widthProperty());
+//                pickedPlant.fitHeightProperty().bind(target.heightProperty());
+                pickedPlant.setFitWidth(60);
                 if(target.getChildren().size() == 0)
                 {
-                    System.out.println("here");
+                    if(pickedPlant.getImage() == peashooter.getImage()) {
+                        if(Integer.parseInt(sunCount.getText()) < 100)
+                            return;
+                        int x = Integer.parseInt(sunCount.getText());
+                        sunCount.setText(Integer.toString(x-100));
+                    }
+                    if(pickedPlant.getImage() == sunflower.getImage()) {
+                        if(Integer.parseInt(sunCount.getText()) < 50)
+                            return;
+                        int x = Integer.parseInt(sunCount.getText());
+                        sunCount.setText(Integer.toString(x-50));
+                    }
+                    if(pickedPlant.getImage() == cherrybomb.getImage()) {
+                        if(Integer.parseInt(sunCount.getText()) < 150)
+                            return;
+                        int x = Integer.parseInt(sunCount.getText());
+                        sunCount.setText(Integer.toString(x-150));
+                        for(ZombieAppear z : zombieApp){
+                            if(((z.a.getLayoutY() - pickedPlant.getLayoutY())*(z.a.getLayoutY() - pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()*(z.a.getLayoutX() - pickedPlant.getLayoutX())) < 900)){
 
+                                z.a.setVisible(false);
+                                z.kill();
+                            }
+                        }
+                    }
+                    if(pickedPlant.getImage() == walnut.getImage()) {
+                        if(Integer.parseInt(sunCount.getText()) < 50)
+                            return;
+                        int x = Integer.parseInt(sunCount.getText());
+                        sunCount.setText(Integer.toString(x-50));
+                    }
                     target.getChildren().add(pickedPlant);
                     if(pickedPlant.getImage() == peashooter.getImage()) {
+                        peashooter.setVisible(false);
+                        c1.setOpacity(0.5);
+                        c1.setDisable(true);
+                        new Thread(new Runnable() {
+                            @Override public void run() {
+                                try
+                                {
+                                    Thread.sleep(5000);
+                                }
+                                catch(InterruptedException e)
+                                {
+
+                                }
+                                Platform.runLater(new Runnable() {
+                                    @Override public void run() {
+                                        peashooter.setVisible(true);
+                                        c1.setOpacity(1);
+                                        c1.setDisable(false);
+                                    }
+                                });
+                            }
+                        }).start();
                         ImageView p = new ImageView("sample/resources/pea.png");
                         p.setVisible(true);
                         p.setLayoutX(target.getLayoutX() + 10);
-                        p.setLayoutY(target.getLayoutY() + 5);
+                        p.setLayoutY(target.getLayoutY()+5);
                         p.setFitHeight(20);
                         p.setFitWidth(20);
 
@@ -271,10 +558,34 @@ public class Backyard4 implements Initializable {
                         pickedPlant.setLayoutY(target.getLayoutY());
                         shotPea.add(temp);
                         time.schedule( temp , 0);
-                        PlantedPlants.add(new PeaShooter(pickedPlant));
+                        PeaShooter newp = new PeaShooter(pickedPlant,0,0);
+                        PlantedPlants.add(newp);
+
                         hello.getChildren().add(p);
                     }
                     if(pickedPlant.getImage() == sunflower.getImage()){
+                        sunflower.setVisible(false);
+                        c2.setOpacity(0.5);
+                        c2.setDisable(true);
+                        new Thread(new Runnable() {
+                            @Override public void run() {
+                                try
+                                {
+                                    Thread.sleep(5000);
+                                }
+                                catch(InterruptedException e)
+                                {
+
+                                }
+                                Platform.runLater(new Runnable() {
+                                    @Override public void run() {
+                                        sunflower.setVisible(true);
+                                        c2.setOpacity(1);
+                                        c2.setDisable(false);
+                                    }
+                                });
+                            }
+                        }).start();
                         ImageView p = new ImageView("sample/resources/sun.png");
                         p.setVisible(true);
                         p.setLayoutX(target.getLayoutX());
@@ -293,14 +604,69 @@ public class Backyard4 implements Initializable {
                         PlantedPlants.add(new Sunflower(pickedPlant));
                     }
 
+                    if(pickedPlant.getImage() == cherrybomb.getImage())
+                    {
+                        cherrybomb.setVisible(false);
+                        c3.setOpacity(0.5);
+                        c3.setDisable(true);
+                        new Thread(new Runnable() {
+                            @Override public void run() {
+                                try
+                                {
+                                    Thread.sleep(5000);
+                                }
+                                catch(InterruptedException e)
+                                {
+
+                                }
+                                Platform.runLater(new Runnable() {
+                                    @Override public void run() {
+                                        cherrybomb.setVisible(true);
+                                        c3.setOpacity(1);
+                                        c3.setDisable(false);
+                                        for(ZombieAppear z : zombieApp){
+
+                                            if(z.a.isVisible() && (z.a.getLayoutY() - pickedPlant.getLayoutY()) * (z.a.getLayoutY() - pickedPlant.getLayoutY()) + (z.a.getLayoutX() - pickedPlant.getLayoutX()) * ((z.a.getLayoutX()) - pickedPlant.getLayoutX()) < 900){
+                                                z.a.setVisible(false);
+                                                z.kill();
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        }).start();
+
+                    }
+
                     if(pickedPlant.getImage()  == walnut.getImage()){
+                        walnut.setVisible(false);
+                        c4.setOpacity(0.5);
+                        c4.setDisable(true);
+                        new Thread(new Runnable() {
+                            @Override public void run() {
+                                try
+                                {
+                                    Thread.sleep(5000);
+                                }
+                                catch(InterruptedException e)
+                                {
+
+                                }
+                                Platform.runLater(new Runnable() {
+                                    @Override public void run() {
+                                        walnut.setVisible(true);
+                                        c4.setOpacity(1);
+                                        c4.setDisable(false);
+                                    }
+                                });
+                            }
+                        }).start();
                         pickedPlant.setLayoutX(target.getLayoutX());
                         pickedPlant.setLayoutY(target.getLayoutY());
                         PlantedPlants.add(new Walnut(pickedPlant));
                     }
-
                 }
-                System.out.println("here2");
+
             }
             e.consume();
         });

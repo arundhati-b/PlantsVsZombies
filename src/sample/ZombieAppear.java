@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 
 public class ZombieAppear extends TimerTask {
-
+    String x;
     int health;
     double speed;
     int k = 0;
     int attack;
+    int storedDelay;
     ImageView reference = new ImageView("sample/resources/Zombie_Normal.gif");
     AnimationTimer t;
     public void  move(ImageView a, ZombieAppear za) {
@@ -41,8 +42,9 @@ public class ZombieAppear extends TimerTask {
         t.start();
     }
 
-    ZombieAppear(ImageView a, int health, double speed, int attack){
-        this.a = a;
+    ZombieAppear(String x, int health, double speed, int attack){
+        this.x = x;
+        this.a = new ImageView(x);
         this.health = health;
         this.speed = speed;
         this.attack = attack;

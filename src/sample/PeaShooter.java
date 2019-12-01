@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class PeaShooter extends Plant {
 
-    PeaShooter(ImageView i) {
-        super((int) i.getLayoutX(), (int) i.getLayoutY(), i, 40, 100);
+    PeaShooter(ImageView i,int x, int y) {
+        super(x,y , i, 40, 100);
     }
 }

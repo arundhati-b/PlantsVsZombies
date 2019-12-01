@@ -14,18 +14,17 @@ public class Main extends Application {
 
 //    public Game g;
     static volatile boolean loadedSession = false;
-    static volatile boolean loaded = false;
 
     static Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-            Player p = Player.getInstance("Default_player");
-            Game g = Game.getInstance(p);
-            p.setGame(g);
-            playersSerialize();
-            serialize();
-            System.exit(0);
+//            Player p = Player.getInstance("Default_player");
+//            Game g = Game.getInstance(p);
+//            p.setGame(g);
+//            playersSerialize();
+//            serialize();
+//            System.exit(0);
             playersDeserialize();
             stage = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
@@ -36,14 +35,6 @@ public class Main extends Application {
             primaryStage.show();
 
 
-//            while(!loaded)
-//            {
-//
-//            }
-//
-//            System.out.println("Hello");
-//        Game.getInstance().playGame();
-
     }
 
     public static void main(String[] args) {
@@ -52,12 +43,13 @@ public class Main extends Application {
 
     static void serialize() throws IOException, NullPointerException
     {
+
         Game g = Game.getInstance();
 
         ObjectOutputStream outstream = null;
         try {
             String fileName = g.getPlayer().getName();
-            outstream = new ObjectOutputStream( new FileOutputStream("Database/"+fileName+".txt"));
+            outstream = new ObjectOutputStream( new FileOutputStream("Database/"+fileName+"_temp.txt"));
             outstream.writeObject(g);
         }
 
@@ -75,7 +67,7 @@ public class Main extends Application {
         ObjectInputStream instream = null;
         try
         {
-            instream = new ObjectInputStream(new FileInputStream("Database/"+fileName+".txt"));
+            instream = new ObjectInputStream(new FileInputStream("Database/"+fileName+"_temp.txt"));
 
             Game g = (Game) instream.readObject();
             Game.setClear();
@@ -108,7 +100,7 @@ public class Main extends Application {
 
     static void playersDeserialize() throws IOException, ClassNotFoundException, InputMismatchException, NullPointerException
     {
-        loadedSession = true;
+//        loadedSession = true;
 
         ObjectInputStream instream = null;
         try
@@ -129,6 +121,47 @@ public class Main extends Application {
         }
 
     }
+
+    static void fullSerialize() throws IOException, NullPointerException
+    {
+        ObjectOutputStream outstream = null;
+        String fullName = Player.getInstance().getName();
+        try {
+            Game g = Game.getInstance();
+            outstream = new ObjectOutputStream( new FileOutputStream("Database/"+fullName+".txt"));
+            outstream.writeObject(g);
+        }
+
+        finally
+        {
+            outstream.close();
+        }
+    }
+
+    static void fullDeserialize(String fileName) throws IOException, ClassNotFoundException, InputMismatchException, NullPointerException
+    {
+        loadedSession = true;
+
+        ObjectInputStream instream = null;
+        try
+        {
+            instream = new ObjectInputStream(new FileInputStream("Database/"+fileName+".txt"));
+
+            Game g = (Game) instream.readObject();
+            Game.setClear();
+            Player.setClear();
+            Game.getInstance(g);
+            Player.getInstance(g.getPlayer());
+            g.print();
+        }
+        finally
+        {
+            instream.close();
+        }
+
+    }
+
+
 
 
 }

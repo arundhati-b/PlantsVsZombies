@@ -73,9 +73,19 @@ public class Backyard implements Initializable {
 
     private VBox cell[][];
     public static ArrayList<LawnMower> lawnMowers = new ArrayList<LawnMower>();
+    transient Timer time = new Timer();
 
     @FXML
     void clickOptions(ActionEvent event) throws Exception {
+        Player.getInstance().saveValues(Integer.parseInt(Score.getText()));
+        ArrayList<Zombie> zombies = new ArrayList<>();
+        for (ZombieAppear z : zombieApp) {
+            Zombie zombie = new Zombie(z.x,z.health,z.speed,z.attack,z.a.getLayoutX(),z.a.getLayoutY(),z.storedDelay);
+            zombies.add(zombie);
+        }
+        Game.getInstance().getLevel().saveValues(Integer.parseInt(sunCount.getText()),Integer.parseInt(Score.getText()),zombies);
+
+        Main.serialize();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("options.fxml"));
         hello.getChildren().setAll(pane);
         event.consume();
@@ -118,15 +128,182 @@ public class Backyard implements Initializable {
                 }
             }
         }
+        if(Main.loadedSession)
+        {
+            init_loaded(l,lawnMowers);
+        }
+        else
+        {
+            Random r = new Random();
+            for(int i = 0; i < l.getLvlNo(); i++){
+                if( i == 0 ){
+                    Zombie t1 = new ZombieNormal();
+                    int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+//                System.out.println("ran1 "+ran1);
+                    for(int j = 0; j < ran1; j++) {
+                        ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
+                        temp.a.setLayoutX(1200);
+                        temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                        hello.getChildren().addAll(temp.a);
+                        zombieApp.add(temp);
+                    }
+                }
+                else if (i == 1){
+                    Zombie t1 = new ZombieCone();
+                    int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                    System.out.println("ran1 "+ran1);
+                    for(int j = 0; j < ran1; j++) {
+                        ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
+                        temp.a.setLayoutX(1500);
+                        temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
+                        hello.getChildren().addAll(temp.a);
+                        zombieApp.add(temp);
+                    }
+                }
+            }
+            int c=0;
+            for(ZombieAppear z : zombieApp){
+//            System.out.println("Here");
+                c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
+//            c += 100;
+                if(c > 50000000){
+                    c = 0;
+                }
+                z.storedDelay = c;
+                time.schedule(z, c);
+            }
+            SunView sunView1  = new SunView(sun1, sunCount,0);
+            ProgBar progressbar = new ProgBar(pb);
+
+            time.schedule(sunView1, 200);
+            time.schedule(progressbar, 1000, 1000);
+            time.schedule(lmwr1, 0,100);
+            time.schedule(lmwr2, 0,100);
+            time.schedule(lmwr3, 0,100);
+            time.schedule(lmwr4, 0,100);
+            time.schedule(lmwr5, 0,100);
+
+            System.out.println("Initialization done");
+
+            Task<Integer> task = new Task<Integer>() {
+                @Override
+                protected Integer call() throws Exception {
+                    while (true) {
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        final int x;
+                        while (true) {
+                            if (progressbar.count >= 1) {
+                                x = 1;
+                                break;
+                            }
+                            int y=0;
+                            for (ZombieAppear zombieAppear : zombieApp) {
+                                if(zombieAppear.a.getLayoutX() <= 140 && zombieAppear.a.isVisible())
+                                {
+                                    y=2;
+                                    break;
+                                }
+                            }
+                            if(y == 2)
+                            {
+                                x = 2;
+                                break;
+                            }
+                        }
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                time.cancel();
+
+                                if(x == 1)
+                                {
+                                    System.out.println("Changing level");
+                                    try
+                                    {
+                                        AnchorPane pane = FXMLLoader.load(getClass().getResource("nextLevelScreen.fxml"));
+                                        hello.getChildren().setAll(pane);
+                                    }
+                                    catch(IOException e)
+                                    {
+
+                                    }
+                                    System.out.println("level changed");
+                                }
+                                else if(x == 2)
+                                {
+                                    try
+                                    {
+                                        AnchorPane pane = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+                                        hello.getChildren().setAll(pane);
+                                    }
+                                    catch(IOException e)
+                                    {
+
+                                    }
+                                }
+
+                            }
+                        });
+                        return null;
+                    }
+                }
+            };
+            Thread t = new Thread(task);
+            t.start();
+
+        }
+
+    }
+
+    public void init_loaded(Level l,ArrayList<LawnMower> lm)
+    {
+        Game g = Game.getInstance();
+
+        for(Plant p: l.PlantedPlants)
+        {
+            Cell c = p.loc;
+            if(p.getClass() == PeaShooter.class)
+            {
+                cell[c.x][c.y].getChildren().add(peashooter);
+            }
+            if(p.getClass() == Walnut.class)
+            {
+                cell[c.x][c.y].getChildren().add(walnut);
+            }
+            if(p.getClass() == Cherrybomb.class)
+            {
+                cell[c.x][c.y].getChildren().add(cherrybomb);
+            }
+            if(p.getClass() == Sunflower.class)
+            {
+                cell[c.x][c.y].getChildren().add(sunflower);
+            }
+        }
+        Timer time = new Timer();
+        for(Zombie z: l.zombies)
+        {
+            ZombieAppear temp = new ZombieAppear(z.image, z.health, z.speed, z.attack);
+            temp.a.setLayoutX(z.x);
+            temp.a.setLayoutY(z.y);
+            hello.getChildren().addAll(temp.a);
+            zombieApp.add(temp);
+            time.schedule(temp,z.storedDelay);
+        }
+        l.zombies.clear();
 
         Random r = new Random();
         for(int i = 0; i < l.getLvlNo(); i++){
             if( i == 0 ){
                 Zombie t1 = new ZombieNormal();
-                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow() - l.zombies.size();
+                if(ran1 < 0)
+                    ran1 = 0;
 //                System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
+                    ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1200);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     hello.getChildren().addAll(temp.a);
@@ -135,10 +312,12 @@ public class Backyard implements Initializable {
             }
             else if (i == 1){
                 Zombie t1 = new ZombieCone();
-                int ran1 = r.nextInt(l.getTop()) + l.getBelow();
+                int ran1 = r.nextInt(l.getTop()) + l.getBelow() - l.zombies.size();
+                if(ran1 < 0)
+                    ran1 = 0;
                 System.out.println("ran1 "+ran1);
                 for(int j = 0; j < ran1; j++) {
-                    ZombieAppear temp = new ZombieAppear(new ImageView(t1.image), t1.health, t1.speed, t1.attack);
+                    ZombieAppear temp = new ZombieAppear(t1.image, t1.health, t1.speed, t1.attack);
                     temp.a.setLayoutX(1500);
                     temp.a.setLayoutY(Level.pos[r.nextInt(Level.pos.length)]);
                     hello.getChildren().addAll(temp.a);
@@ -146,28 +325,35 @@ public class Backyard implements Initializable {
                 }
             }
         }
-
-        SunView sunView1  = new SunView(sun1, sunCount,0);
-        ProgBar progressbar = new ProgBar(pb);
-        Timer time = new Timer();
-        int c = 0;
-        for(ZombieAppear z : zombieApp){
+        int c=0;
+        for(ZombieAppear zom : zombieApp){
 //            System.out.println("Here");
+            ZombieAppear z = new ZombieAppear(zom.x,zom.health,zom.speed,zom.attack);
             c += r.nextInt(5000) + (6000 - l.getLvlNo()*1000);
 //            c += 100;
             if(c > 50000000){
                 c = 0;
             }
+            zom.storedDelay = c;
+
             time.schedule(z, c);
         }
 
+        SunView sunView1  = new SunView(sun1, sunCount,0);
+        ProgBar progressbar = new ProgBar(pb);
+
         time.schedule(sunView1, 200);
         time.schedule(progressbar, 1000, 1000);
-        time.schedule(lmwr1, 0,100);
-        time.schedule(lmwr2, 0,100);
-        time.schedule(lmwr3, 0,100);
-        time.schedule(lmwr4, 0,100);
-        time.schedule(lmwr5, 0,100);
+
+        for(LawnMower lmw : lawnMowers)
+        {
+            time.schedule(lmw,0,100);
+        }
+//        time.schedule(lmwr1, 0,100);
+//        time.schedule(lmwr2, 0,100);
+//        time.schedule(lmwr3, 0,100);
+//        time.schedule(lmwr4, 0,100);
+//        time.schedule(lmwr5, 0,100);
 
         System.out.println("Initialization done");
 
@@ -233,12 +419,15 @@ public class Backyard implements Initializable {
 
                         }
                     });
-                        return null;
-                    }
+                    return null;
                 }
+            }
         };
         Thread t = new Thread(task);
         t.start();
+
+
+        Main.loadedSession = false;
 
     }
 
@@ -369,7 +558,9 @@ public class Backyard implements Initializable {
                         pickedPlant.setLayoutY(target.getLayoutY());
                         shotPea.add(temp);
                         time.schedule( temp , 0);
-                        PlantedPlants.add(new PeaShooter(pickedPlant));
+                        PeaShooter newp = new PeaShooter(pickedPlant,0,0);
+                        PlantedPlants.add(newp);
+
                         hello.getChildren().add(p);
                     }
                     if(pickedPlant.getImage() == sunflower.getImage()){

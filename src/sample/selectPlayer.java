@@ -50,7 +50,7 @@ public class selectPlayer implements Initializable {
             return;
         String n = rb.getText();
 
-        Main.deserialize(n);
+        Main.fullDeserialize(n);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         loadPane.getChildren().setAll(pane);
     }

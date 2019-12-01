@@ -13,13 +13,18 @@ public final class Player implements Serializable,Comparable<Player> {
     private Game game;
     private int score;
     private int highestLevel;
+    private int currentLevel;
     private Player(String n)
     {
         name = n;
         playerList.getInstance().addPlayer(this);
         score = 0;
 //        score = s;
-        highestLevel = 5; // change to 1
+        highestLevel = 1; // change to 1
+    }
+    public void saveValues(int updatedScore)
+    {
+        score += updatedScore;
     }
     public static Player getInstance()
     {
@@ -39,6 +44,7 @@ public final class Player implements Serializable,Comparable<Player> {
         }
         return player;
     }
+
     public static void setClear()
     {
         player = null;
@@ -99,4 +105,5 @@ public final class Player implements Serializable,Comparable<Player> {
         System.out.println("Score: "+score);
         System.out.println("Highest Level: "+highestLevel);
     }
+
 }

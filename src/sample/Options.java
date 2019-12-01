@@ -19,7 +19,7 @@ public class Options {
 
     @FXML
     void backToGame(ActionEvent event) throws Exception{
-//        Main.deserialize();
+        Main.deserialize(Player.getInstance().getName());
         AnchorPane pane = FXMLLoader.load(getClass().getResource("backyard.fxml"));
         optionPane.getChildren().setAll(pane);
         event.consume();
@@ -34,6 +34,7 @@ public class Options {
     @FXML
     void openSaveGameMenu(ActionEvent event) throws IOException
     {
+        Main.fullSerialize();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("saveGameMenu.fxml"));
         optionPane.getChildren().setAll(pane);
         event.consume();

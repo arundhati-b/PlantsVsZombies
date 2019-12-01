@@ -17,15 +17,16 @@ import java.util.Random;
 public abstract class Level implements Serializable {
 
     transient static int[] pos = {90 ,200, 310, 420,500};
-    ArrayList<Plant> currentPlants = new ArrayList<Plant>();
+//    ArrayList<Plant> currentPlants = new ArrayList<Plant>();
     ArrayList<Plant> PlantedPlants = new ArrayList<>();
+    ArrayList<Zombie> zombies = new ArrayList<>();
     private int sunCount;
     private int below;
     private int top;
     private int levelScore;
     private int lvlNo;
-    volatile boolean levelLost;
-    volatile boolean levelCompleted;
+    transient volatile boolean levelLost;
+    transient volatile boolean levelCompleted;
     Level(int top, int below, int lvlNo) {
         sunCount = 100;
         levelScore = 0;
@@ -34,6 +35,13 @@ public abstract class Level implements Serializable {
         this.top = top;
         levelLost = false;
         levelCompleted = false;
+    }
+
+    public void saveValues(int sc,int lc, ArrayList<Zombie> z)
+    {
+        sunCount = sc;
+        levelScore = lc;
+        zombies = z;
     }
 
     public void play() throws GameLostException

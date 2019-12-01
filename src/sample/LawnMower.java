@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LawnMower extends TimerTask{
-    ImageView lm;
+    transient ImageView lm;
     boolean detected = false;
     Timer time = new Timer();
     int x ;
